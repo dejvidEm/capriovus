@@ -1,12 +1,11 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getCategoryBySlug, getProductsByCategory } from '@/data/products';
 import CategoryCircle from '@/components/ui/CategoryCircle';
 import ScrollReveal from '@/components/ui/ScrollReveal';
-import ProductCard from '@/components/ui/ProductCard';
 import { categories } from '@/data/products';
 
 const CategoryDetail: React.FC = () => {
@@ -71,17 +70,44 @@ const CategoryDetail: React.FC = () => {
         </div>
       </section>
 
-      {/* Products list */}
+      {/* Products list - now as clickable links */}
       <section className="py-12 pb-24">
         <div className="container mx-auto px-4">
-          <div className="grid gap-12 lg:gap-16">
+          <div className="max-w-3xl mx-auto space-y-4">
             {products.map((product, index) => (
-              <ProductCard 
-                key={product.id} 
-                product={product} 
-                index={index}
-                categoryColor="hsl(45, 93%, 58%)"
-              />
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+              >
+                <Link
+                  to={`/product/${product.id}`}
+                  className="group flex items-center justify-between p-6 bg-card rounded-xl border border-border hover:border-primary hover:shadow-lg transition-all duration-300"
+                >
+                  <div className="flex items-center gap-4">
+                    <div 
+                      className="w-12 h-12 rounded-full flex items-center justify-center"
+                      style={{ backgroundColor: 'hsl(45, 93%, 58%)' }}
+                    >
+                      <span className="text-white font-bold">{index + 1}</span>
+                    </div>
+                    <div>
+                      <h3 className="font-display text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
+                        {product.name[language]}
+                      </h3>
+                      <p className="text-sm text-muted-foreground line-clamp-1">
+                        {product.description[language]}
+                      </p>
+                    </div>
+                  </div>
+                  <ArrowRight 
+                    size={20} 
+                    className="text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" 
+                  />
+                </Link>
+              </motion.div>
             ))}
           </div>
         </div>
