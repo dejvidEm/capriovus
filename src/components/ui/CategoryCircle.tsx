@@ -28,8 +28,8 @@ const sizeClasses = {
   xs: 'w-16 h-16',
   sm: 'w-20 h-20',
   md: 'w-28 h-28',
-  lg: 'w-36 h-36 md:w-44 md:h-44',
-  xl: 'w-44 h-44 md:w-52 md:h-52',
+  lg: 'w-36 h-36 md:w-48 md:h-48',
+  xl: 'w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72',
 };
 
 const labelSizes = {
