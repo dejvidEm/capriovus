@@ -11,9 +11,9 @@ const Index: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <div className="blob-pattern">
+    <div>
       {/* Hero Section */}
-      <section className="relative min-h-[75vh] flex items-center">
+      <section className="relative min-h-[75vh] flex items-center bg-white">
         <div className="container mx-auto px-4 py-12">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Hero Content */}
@@ -22,7 +22,7 @@ const Index: React.FC = () => {
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-                className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 leading-tight"
+                className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-4 leading-tight"
               >
                 {t('home.hero.title')}
               </motion.h1>
@@ -30,7 +30,7 @@ const Index: React.FC = () => {
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-                className="font-display text-2xl md:text-3xl text-primary-dark italic mb-8"
+                className="font-display text-2xl md:text-3xl text-amber-600 italic mb-8"
               >
                 {t('home.hero.subtitle')}
               </motion.p>
@@ -66,7 +66,7 @@ const Index: React.FC = () => {
       </section>
 
       {/* Category Circles Section */}
-      <section className="py-20 bg-secondary/30">
+      <section className="py-20 bg-secondary/30 blob-pattern">
         <div className="container mx-auto px-4">
           <ScrollReveal>
             <h2 className="font-display text-3xl md:text-4xl font-semibold text-center text-foreground mb-16">
