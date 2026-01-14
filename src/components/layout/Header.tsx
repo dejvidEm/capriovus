@@ -52,71 +52,36 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? 'bg-card/90 backdrop-blur-md shadow-sm' : 'bg-transparent'
-      }`}>
-        {/* Top bar with language switch */}
-        <div className={`transition-all duration-300 ${isScrolled ? 'py-1' : 'py-2'}`}>
-          <div className="container mx-auto px-4 flex justify-end items-center gap-2">
-            {languages.map((lang) => (
-              <button
-                key={lang.code}
-                onClick={() => setLanguage(lang.code)}
-                className={`px-3 py-1 text-sm font-medium rounded-full transition-all duration-300 ${
-                  language === lang.code
-                    ? 'bg-primary text-primary-foreground'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50'
+      {/* Floating pill navbar */}
+      <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl">
+        <nav className={`flex items-center justify-between px-4 md:px-6 py-3 rounded-full transition-all duration-500 ${
+          isScrolled 
+            ? 'bg-card/95 backdrop-blur-md shadow-lg border border-border/50' 
+            : 'bg-card/80 backdrop-blur-sm border border-border/30'
+        }`}>
+          {/* Logo - left */}
+          <Link to="/" className="flex items-center gap-2 group">
+            <span className="font-display font-semibold tracking-wider text-foreground text-lg md:text-xl">
+              CAPRIOVUS
+            </span>
+          </Link>
+
+          {/* Desktop navigation - center */}
+          <div className="hidden lg:flex items-center gap-1">
+            {navItems.slice(0, 2).map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
+                  isActive(item.path)
+                    ? 'bg-primary/10 text-primary-dark'
+                    : 'text-foreground/80 hover:text-foreground hover:bg-secondary/50'
                 }`}
               >
-                {lang.label}
-              </button>
+                {item.label}
+              </Link>
             ))}
-          </div>
-        </div>
 
-        {/* Main header */}
-        <div className="container mx-auto px-4">
-          <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-16' : 'h-20'}`}>
-            {/* Mobile menu button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(true)}
-              className="lg:hidden p-2 text-foreground hover:bg-secondary/30 rounded-lg transition-colors"
-              aria-label="Open menu"
-            >
-              <Menu size={24} />
-            </button>
-
-            {/* Desktop navigation - left */}
-            <nav className="hidden lg:flex items-center gap-8">
-              {navItems.slice(0, 2).map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`text-sm font-medium transition-colors duration-300 story-link ${
-                    isActive(item.path)
-                      ? 'text-primary-dark'
-                      : 'text-foreground/80 hover:text-foreground'
-                  }`}
-                >
-                  <span>{item.label}</span>
-                </Link>
-              ))}
-            </nav>
-
-            {/* Logo - center */}
-            <Link to="/" className="flex flex-col items-center group">
-              <span className={`font-display font-semibold tracking-wider text-foreground transition-all duration-300 ${
-                isScrolled ? 'text-xl md:text-2xl' : 'text-2xl md:text-3xl'
-              }`}>
-                CAPRIOVUS
-              </span>
-              <span className="text-xs tracking-[0.3em] text-muted-foreground uppercase group-hover:text-primary transition-colors">
-                Since 1993
-              </span>
-            </Link>
-
-            {/* Desktop navigation - right */}
-            <nav className="hidden lg:flex items-center gap-8">
             {/* Products with dropdown */}
             <div 
               className="relative"
@@ -125,10 +90,10 @@ const Header: React.FC = () => {
             >
               <Link
                 to="/products"
-                className={`flex items-center gap-1 text-sm font-medium transition-colors duration-300 ${
+                className={`flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
                   isActive('/products')
-                    ? 'text-primary-dark'
-                    : 'text-foreground/80 hover:text-foreground'
+                    ? 'bg-primary/10 text-primary-dark'
+                    : 'text-foreground/80 hover:text-foreground hover:bg-secondary/50'
                 }`}
               >
                 {t('nav.products')}
@@ -143,9 +108,9 @@ const Header: React.FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-full right-0 pt-4 z-50"
+                    className="absolute top-full left-1/2 -translate-x-1/2 pt-4 z-50"
                   >
-                    <div className="bg-card border border-border rounded-xl shadow-lg p-6 min-w-[600px]">
+                    <div className="bg-card border border-border rounded-2xl shadow-xl p-6 min-w-[600px]">
                       <div className="grid grid-cols-5 gap-6">
                         {categories.map((category) => (
                           <CategoryCircle
@@ -161,29 +126,54 @@ const Header: React.FC = () => {
               </AnimatePresence>
             </div>
 
-              {navItems.slice(3).map((item) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`text-sm font-medium transition-colors duration-300 story-link ${
-                    isActive(item.path)
-                      ? 'text-primary-dark'
-                      : 'text-foreground/80 hover:text-foreground'
+            {navItems.slice(3).map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
+                  isActive(item.path)
+                    ? 'bg-primary/10 text-primary-dark'
+                    : 'text-foreground/80 hover:text-foreground hover:bg-secondary/50'
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+
+          {/* Right side: Language switch + mobile menu */}
+          <div className="flex items-center gap-2">
+            {/* Language switcher - desktop */}
+            <div className="hidden md:flex items-center gap-1 bg-secondary/50 rounded-full p-1">
+              {languages.map((lang) => (
+                <button
+                  key={lang.code}
+                  onClick={() => setLanguage(lang.code)}
+                  className={`px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-300 ${
+                    language === lang.code
+                      ? 'bg-primary text-primary-foreground'
+                      : 'text-muted-foreground hover:text-foreground'
                   }`}
                 >
-                  <span>{item.label}</span>
-                </Link>
+                  {lang.label}
+                </button>
               ))}
-            </nav>
+            </div>
 
-            {/* Spacer for mobile */}
-            <div className="lg:hidden w-10" />
+            {/* Mobile menu button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(true)}
+              className="lg:hidden p-2 text-foreground hover:bg-secondary/50 rounded-full transition-colors"
+              aria-label="Open menu"
+            >
+              <Menu size={22} />
+            </button>
           </div>
-        </div>
+        </nav>
       </header>
 
       {/* Header spacer */}
-      <div className="h-32" />
+      <div className="h-24" />
 
       {/* Mobile menu overlay */}
       <AnimatePresence>
