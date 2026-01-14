@@ -56,8 +56,8 @@ const Header: React.FC = () => {
       <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl">
         <nav className={`flex items-center justify-between px-4 md:px-6 py-3 rounded-full transition-all duration-500 ${
           isScrolled 
-            ? 'bg-card/95 backdrop-blur-md shadow-lg border border-border/50' 
-            : 'bg-card/80 backdrop-blur-sm border border-border/30'
+            ? 'bg-white shadow-lg border border-border/50' 
+            : 'bg-white border border-border/30'
         }`}>
           {/* Logo - left */}
           <Link to="/" className="flex items-center gap-2 group">
