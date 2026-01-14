@@ -86,12 +86,20 @@ const CategoryDetail: React.FC = () => {
                   to={`/product/${product.id}`}
                   className="group flex items-center justify-between p-6 bg-card rounded-xl border border-border hover:border-primary hover:shadow-lg transition-all duration-300"
                 >
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-5">
+                    {/* Egg-shaped circle like main categories */}
                     <div 
-                      className="w-12 h-12 rounded-full flex items-center justify-center"
+                      className="w-14 h-14 rounded-full flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300"
                       style={{ backgroundColor: 'hsl(45, 93%, 58%)' }}
                     >
-                      <span className="text-white font-bold">{index + 1}</span>
+                      <svg 
+                        viewBox="0 0 24 32" 
+                        className="w-6 h-8 text-white"
+                        fill="currentColor"
+                      >
+                        <ellipse cx="12" cy="18" rx="10" ry="13" />
+                        <ellipse cx="12" cy="12" rx="8" ry="10" />
+                      </svg>
                     </div>
                     <div>
                       <h3 className="font-display text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
