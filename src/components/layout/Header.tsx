@@ -117,49 +117,49 @@ const Header: React.FC = () => {
 
             {/* Desktop navigation - right */}
             <nav className="hidden lg:flex items-center gap-8">
-              {/* Products with dropdown */}
-              <div 
-                className="relative"
-                onMouseEnter={() => setIsProductsOpen(true)}
-                onMouseLeave={() => setIsProductsOpen(false)}
+            {/* Products with dropdown */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setIsProductsOpen(true)}
+              onMouseLeave={() => setIsProductsOpen(false)}
+            >
+              <Link
+                to="/products"
+                className={`flex items-center gap-1 text-sm font-medium transition-colors duration-300 ${
+                  isActive('/products')
+                    ? 'text-primary-dark'
+                    : 'text-foreground/80 hover:text-foreground'
+                }`}
               >
-                <Link
-                  to="/products"
-                  className={`flex items-center gap-1 text-sm font-medium transition-colors duration-300 ${
-                    isActive('/products')
-                      ? 'text-primary-dark'
-                      : 'text-foreground/80 hover:text-foreground'
-                  }`}
-                >
-                  {t('nav.products')}
-                  <ChevronDown size={14} className={`transition-transform duration-300 ${isProductsOpen ? 'rotate-180' : ''}`} />
-                </Link>
-                
-                {/* Products dropdown */}
-                <AnimatePresence>
-                  {isProductsOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute top-full left-1/2 -translate-x-1/2 pt-4 z-50"
-                    >
-                      <div className="bg-card border border-border rounded-xl shadow-lg p-6 min-w-[600px]">
-                        <div className="grid grid-cols-5 gap-6">
-                          {categories.map((category) => (
-                            <CategoryCircle
-                              key={category.id}
-                              category={category}
-                              size="md"
-                            />
-                          ))}
-                        </div>
+                {t('nav.products')}
+                <ChevronDown size={14} className={`transition-transform duration-300 ${isProductsOpen ? 'rotate-180' : ''}`} />
+              </Link>
+              
+              {/* Products dropdown */}
+              <AnimatePresence>
+                {isProductsOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full right-0 pt-4 z-50"
+                  >
+                    <div className="bg-card border border-border rounded-xl shadow-lg p-6 min-w-[600px]">
+                      <div className="grid grid-cols-5 gap-6">
+                        {categories.map((category) => (
+                          <CategoryCircle
+                            key={category.id}
+                            category={category}
+                            size="md"
+                          />
+                        ))}
                       </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
 
               {navItems.slice(3).map((item) => (
                 <Link
