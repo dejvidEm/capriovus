@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 interface EggCursorProps {
@@ -6,42 +6,42 @@ interface EggCursorProps {
 }
 
 const EggCursor: React.FC<EggCursorProps> = ({ isActive }) => {
-  const [isVisible, setIsVisible] = useState(false);
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
   const rotation = useMotionValue(0);
+  const prevXRef = useRef(0);
 
   const springConfig = { damping: 25, stiffness: 400 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
   const rotationSpring = useSpring(rotation, { damping: 20, stiffness: 150 });
 
-  const handleMouseMove = useCallback((e: MouseEvent) => {
-    const prevX = cursorX.get();
-    const deltaX = e.clientX - prevX;
-    
-    // Calculate rotation based on horizontal movement
-    const newRotation = Math.max(-25, Math.min(25, deltaX * 0.8));
-    rotation.set(newRotation);
-    
-    cursorX.set(e.clientX);
-    cursorY.set(e.clientY);
-  }, [cursorX, cursorY, rotation]);
-
   useEffect(() => {
-    if (isActive) {
-      setIsVisible(true);
-      window.addEventListener('mousemove', handleMouseMove);
-    } else {
-      setIsVisible(false);
-    }
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isActive) return;
+      
+      const deltaX = e.clientX - prevXRef.current;
+      prevXRef.current = e.clientX;
+      
+      // Calculate rotation based on horizontal movement
+      const newRotation = Math.max(-25, Math.min(25, deltaX * 0.8));
+      rotation.set(newRotation);
+      
+      cursorX.set(e.clientX);
+      cursorY.set(e.clientY);
     };
-  }, [isActive, handleMouseMove]);
 
-  if (!isVisible) return null;
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [isActive, cursorX, cursorY, rotation]);
+
+  // Hide cursor when not active
+  useEffect(() => {
+    if (!isActive) {
+      cursorX.set(-100);
+      cursorY.set(-100);
+    }
+  }, [isActive, cursorX, cursorY]);
 
   return (
     <motion.div
@@ -51,6 +51,7 @@ const EggCursor: React.FC<EggCursorProps> = ({ isActive }) => {
         y: cursorYSpring,
         translateX: '-50%',
         translateY: '-50%',
+        opacity: isActive ? 1 : 0,
       }}
     >
       <motion.svg
