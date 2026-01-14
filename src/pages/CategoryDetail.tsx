@@ -6,6 +6,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { getCategoryBySlug, getProductsByCategory } from '@/data/products';
 import CategoryCircle from '@/components/ui/CategoryCircle';
 import ScrollReveal from '@/components/ui/ScrollReveal';
+import ProductCard from '@/components/ui/ProductCard';
 import { categories } from '@/data/products';
 
 const CategoryDetail: React.FC = () => {
@@ -72,39 +73,15 @@ const CategoryDetail: React.FC = () => {
 
       {/* Products list */}
       <section className="py-12 pb-24">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <div className="grid gap-6">
+        <div className="container mx-auto px-4">
+          <div className="grid gap-12 lg:gap-16">
             {products.map((product, index) => (
-              <ScrollReveal key={product.id} delay={index * 0.1}>
-                <div className="bg-card rounded-2xl p-6 md:p-8 border border-border hover:border-primary/30 hover:shadow-md transition-all duration-300">
-                  <h3 className="font-display text-xl font-semibold text-foreground mb-3">
-                    {product.name[language]}
-                  </h3>
-                  
-                  <p className="text-muted-foreground mb-4">
-                    {product.description[language]}
-                  </p>
-
-                  <div className="grid md:grid-cols-2 gap-4 text-sm">
-                    <div className="bg-secondary/30 rounded-lg p-4">
-                      <span className="font-semibold text-foreground block mb-1">
-                        {t('products.usage')}
-                      </span>
-                      <span className="text-muted-foreground">
-                        {product.usage[language]}
-                      </span>
-                    </div>
-                    <div className="bg-secondary/30 rounded-lg p-4">
-                      <span className="font-semibold text-foreground block mb-1">
-                        {t('products.packaging')}
-                      </span>
-                      <span className="text-muted-foreground">
-                        {product.packaging[language]}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
+              <ProductCard 
+                key={product.id} 
+                product={product} 
+                index={index}
+                categoryColor="hsl(45, 93%, 58%)"
+              />
             ))}
           </div>
         </div>
