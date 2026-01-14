@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Category } from '@/data/products';
-import EggCursor from './EggCursor';
 
 // Import category images
 import liquidImg from '@/assets/category-liquid.jpg';
@@ -43,30 +42,24 @@ const labelSizes = {
 
 const CategoryCircle: React.FC<CategoryCircleProps> = ({ category, size = 'lg', onClick }) => {
   const { language } = useLanguage();
-  const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <>
-      <EggCursor isActive={isHovered} />
-      <Link
-        to={`/products/${category.slug}`}
-        onClick={onClick}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        className="circle-category group"
-      >
-        <div className={`circle-category-image ${sizeClasses[size]}`}>
-          <img
-            src={categoryImages[category.image]}
-            alt={category.name[language]}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-          />
-        </div>
-        <span className={`circle-category-label ${labelSizes[size]}`}>
-          {category.name[language]}
-        </span>
-      </Link>
-    </>
+    <Link
+      to={`/products/${category.slug}`}
+      onClick={onClick}
+      className="circle-category group"
+    >
+      <div className={`circle-category-image ${sizeClasses[size]}`}>
+        <img
+          src={categoryImages[category.image]}
+          alt={category.name[language]}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+      </div>
+      <span className={`circle-category-label ${labelSizes[size]}`}>
+        {category.name[language]}
+      </span>
+    </Link>
   );
 };
 
