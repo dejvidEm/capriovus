@@ -72,6 +72,7 @@ const translations: Record<Language, Record<string, string>> = {
     'products.more': 'Viac informácií',
     'products.back': 'Späť na výrobky',
     'products.usage': 'Použitie',
+    'products.downloadPdf': 'Stiahnuť PDF',
     'products.packaging': 'Balenie',
     'products.description': 'Popis',
     
@@ -144,6 +145,7 @@ const translations: Record<Language, Record<string, string>> = {
     'products.more': 'More Information',
     'products.back': 'Back to Products',
     'products.usage': 'Usage',
+    'products.downloadPdf': 'Download PDF',
     'products.packaging': 'Packaging',
     'products.description': 'Description',
     
@@ -216,6 +218,7 @@ const translations: Record<Language, Record<string, string>> = {
     'products.more': 'További információ',
     'products.back': 'Vissza a termékekhez',
     'products.usage': 'Felhasználás',
+    'products.downloadPdf': 'PDF letöltése',
     'products.packaging': 'Csomagolás',
     'products.description': 'Leírás',
     
