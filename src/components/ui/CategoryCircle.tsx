@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useLanguage, Language } from '@/contexts/LanguageContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { Category } from '@/data/products';
 
 // Import category images
@@ -20,25 +20,27 @@ const categoryImages: Record<string, string> = {
 
 interface CategoryCircleProps {
   category: Category;
-  size?: 'xs' | 'sm' | 'md' | 'lg';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   onClick?: () => void;
 }
 
 const sizeClasses = {
   xs: 'w-16 h-16',
   sm: 'w-20 h-20',
-  md: 'w-28 h-28 md:w-32 md:h-32',
-  lg: 'w-32 h-32 md:w-40 md:h-40',
+  md: 'w-28 h-28',
+  lg: 'w-36 h-36 md:w-44 md:h-44',
+  xl: 'w-44 h-44 md:w-52 md:h-52',
 };
 
 const labelSizes = {
   xs: 'text-xs',
   sm: 'text-xs',
   md: 'text-sm',
-  lg: 'text-base',
+  lg: 'text-base md:text-lg',
+  xl: 'text-lg md:text-xl',
 };
 
-const CategoryCircle: React.FC<CategoryCircleProps> = ({ category, size = 'md', onClick }) => {
+const CategoryCircle: React.FC<CategoryCircleProps> = ({ category, size = 'lg', onClick }) => {
   const { language } = useLanguage();
 
   return (

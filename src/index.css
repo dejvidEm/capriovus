@@ -133,21 +133,21 @@
 @layer components {
   /* Circle button styles */
   .circle-category {
-    @apply relative flex flex-col items-center gap-3 cursor-pointer transition-all duration-300;
+    @apply relative flex flex-col items-center gap-4 cursor-pointer transition-all duration-300;
   }
 
   .circle-category-image {
-    @apply w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-3 border-primary shadow-md transition-all duration-300;
+    @apply rounded-full overflow-hidden border-4 border-primary/80 shadow-lg transition-all duration-500;
     box-shadow: var(--shadow-circle);
   }
 
   .circle-category:hover .circle-category-image {
-    @apply border-accent scale-105;
-    box-shadow: var(--shadow-medium);
+    @apply border-primary scale-105;
+    box-shadow: 0 12px 40px hsl(45 90% 55% / 0.3);
   }
 
   .circle-category-label {
-    @apply text-sm md:text-base font-medium text-foreground text-center transition-colors;
+    @apply font-medium text-foreground text-center transition-all duration-300;
     font-family: var(--font-body);
   }
 
