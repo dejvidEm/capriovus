@@ -133,7 +133,7 @@
 @layer components {
   /* Circle button styles */
   .circle-category {
-    @apply relative flex flex-col items-center gap-4 cursor-pointer transition-all duration-300;
+    @apply relative flex flex-col items-center gap-4 cursor-default transition-all duration-300;
   }
 
   .circle-category-image {
