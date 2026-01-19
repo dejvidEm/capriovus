@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Shield, Lightbulb, Users } from 'lucide-react';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 
 const About: React.FC = () => {
   const { t } = useLanguage();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   const values = [
     {

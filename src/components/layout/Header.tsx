@@ -50,6 +50,10 @@ const Header: React.FC = () => {
     return location.pathname.startsWith(path);
   };
 
+  const handleNavClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <>
       {/* Floating pill navbar */}
@@ -60,7 +64,7 @@ const Header: React.FC = () => {
             : 'bg-white border border-border/30'
         }`}>
           {/* Logo - left */}
-          <Link to="/" className="flex items-center gap-2 group">
+          <Link to="/" onClick={handleNavClick} className="flex items-center gap-2 group">
             <img 
               src="/capriovus.webp" 
               alt="Capriovus" 
@@ -74,6 +78,7 @@ const Header: React.FC = () => {
               <Link
                 key={item.path}
                 to={item.path}
+                onClick={handleNavClick}
                 className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 border ${
                   isActive(item.path)
                     ? 'bg-primary/10 text-primary-dark border-blue/20'
@@ -92,6 +97,7 @@ const Header: React.FC = () => {
             >
               <Link
                 to="/products"
+                onClick={handleNavClick}
                 className={`flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 border ${
                   isActive('/products')
                     ? 'bg-primary/10 text-primary-dark border-blue/20'
@@ -133,6 +139,7 @@ const Header: React.FC = () => {
               <Link
                 key={item.path}
                 to={item.path}
+                onClick={handleNavClick}
                 className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 border ${
                   isActive(item.path)
                     ? 'bg-primary/10 text-primary-dark border-blue/20'
@@ -266,7 +273,10 @@ const Header: React.FC = () => {
                         ) : (
                           <Link
                             to={item.path}
-                            onClick={() => setIsMobileMenuOpen(false)}
+                            onClick={() => {
+                              setIsMobileMenuOpen(false);
+                              handleNavClick();
+                            }}
                             className={`block px-4 py-4 rounded-xl transition-colors font-medium border ${
                               isActive(item.path)
                                 ? 'bg-primary/10 text-primary-dark border-blue/20'

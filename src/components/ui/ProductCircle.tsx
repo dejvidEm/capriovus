@@ -33,10 +33,15 @@ const ProductCircle: React.FC<ProductCircleProps> = ({ product, size = 'lg', onC
     ? product.images[0] 
     : '/img1.png';
 
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (onClick) onClick();
+  };
+
   return (
     <Link
       to={`/product/${product.id}`}
-      onClick={onClick}
+      onClick={handleClick}
       className="circle-category group flex flex-col items-center"
     >
       {/* Circle with image */}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -17,6 +17,10 @@ const SubcategoryDetail: React.FC = () => {
     categorySlug: string; 
     subcategorySlug: string;
   }>();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [categorySlug, subcategorySlug]);
   const { t, language } = useLanguage();
   
   const category = getCategoryBySlug(categorySlug || '');

@@ -41,10 +41,15 @@ const SubcategoryCircle: React.FC<SubcategoryCircleProps> = ({
     ? `/products/${categorySlug}/${subcategory.slug}`
     : `/products/${categoryId}/${subcategory.slug}`;
 
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (onClick) onClick();
+  };
+
   return (
     <Link
       to={linkPath}
-      onClick={onClick}
+      onClick={handleClick}
       className="circle-category group flex flex-col items-center"
     >
       {/* Circle with image */}

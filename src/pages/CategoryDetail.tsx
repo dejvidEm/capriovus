@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -12,6 +12,10 @@ import { categories } from '@/data/products';
 const CategoryDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const { t, language } = useLanguage();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [slug]);
   
   const category = getCategoryBySlug(slug || '');
   const products = category ? getProductsByCategory(category.id) : [];

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { categories } from '@/data/products';
@@ -7,6 +7,10 @@ import ScrollReveal from '@/components/ui/ScrollReveal';
 
 const Products: React.FC = () => {
   const { t, language } = useLanguage();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   return (
     <div className="blob-pattern min-h-screen">

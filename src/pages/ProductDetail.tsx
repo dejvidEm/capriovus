@@ -16,6 +16,10 @@ const ProductDetail: React.FC = () => {
   const { t, language } = useLanguage();
   const navigate = useNavigate();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [productId]);
   
   const product = getProductById(productId || '');
   const category = product ? categories.find(c => c.id === product.categoryId) : null;

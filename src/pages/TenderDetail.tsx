@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, Calendar, Tag } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -191,6 +191,10 @@ const tenderDetails: TenderDetail[] = [
 const TenderDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const { t, language } = useLanguage();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [slug]);
 
   const tender = tenderDetails.find(t => t.slug === slug);
 
