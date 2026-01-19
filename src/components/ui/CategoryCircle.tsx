@@ -22,6 +22,7 @@ interface CategoryCircleProps {
   category: Category;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   onClick?: () => void;
+  showLogo?: boolean;
 }
 
 const sizeClasses = {
@@ -40,23 +41,63 @@ const labelSizes = {
   xl: 'text-lg md:text-xl',
 };
 
-const CategoryCircle: React.FC<CategoryCircleProps> = ({ category, size = 'lg', onClick }) => {
+const logoSizes = {
+  xs: 'h-4',
+  sm: 'h-5',
+  md: 'h-6',
+  lg: 'h-8 md:h-10',
+  xl: 'h-10 md:h-12 lg:h-14',
+};
+
+const badgeSizes = {
+  xs: 'w-6 h-6',
+  sm: 'w-7 h-7',
+  md: 'w-8 h-8',
+  lg: 'w-10 h-10 md:w-12 md:h-12',
+  xl: 'w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20',
+};
+
+const CategoryCircle: React.FC<CategoryCircleProps> = ({ category, size = 'lg', onClick, showLogo = true }) => {
   const { language } = useLanguage();
 
   return (
     <Link
       to={`/products/${category.slug}`}
       onClick={onClick}
-      className="circle-category group"
+      className="circle-category group flex flex-col items-center"
     >
-      <div className={`circle-category-image ${sizeClasses[size]}`}>
+      {/* Logo above circle */}
+      {showLogo && (
+        <div className="mb-3">
+          <img 
+            src="/capriovus.webp" 
+            alt="Capriovus" 
+            className={`${logoSizes[size]} w-auto object-contain opacity-60 group-hover:opacity-100 transition-opacity`}
+          />
+        </div>
+      )}
+      
+      {/* Circle with image and quality badge */}
+      <div className={`circle-category-image ${sizeClasses[size]} relative overflow-visible`}>
         <img
           src={categoryImages[category.image]}
           alt={category.name[language]}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 rounded-full"
         />
+        {/* Quality badge in top right corner - overlapping */}
+        <div className={`absolute -top-2 -right-2 ${badgeSizes[size]} flex items-center justify-center z-50`}>
+          <img 
+            src="/quality.png" 
+            alt="Quality" 
+            className="w-full h-full object-contain drop-shadow-lg"
+            onError={(e) => {
+              console.error('Failed to load quality.png');
+            }}
+          />
+        </div>
       </div>
-      <span className={`circle-category-label ${labelSizes[size]}`}>
+      
+      <span className={`circle-category-label ${labelSizes[size]} mt-4`}>
         {category.name[language]}
       </span>
     </Link>

@@ -1,25 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, FileDown, X } from 'lucide-react';
+import { ArrowLeft, FileDown, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { getProductById, getCategoryBySlug, categories } from '@/data/products';
+import { 
+  getProductById, 
+  getCategoryBySlug, 
+  getSubcategoryBySlug,
+  categories 
+} from '@/data/products';
 import { Button } from '@/components/ui/button';
 
 const ProductDetail: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
   const { t, language } = useLanguage();
   const navigate = useNavigate();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
   const product = getProductById(productId || '');
   const category = product ? categories.find(c => c.id === product.categoryId) : null;
+  // Find subcategory by ID if product has subcategoryId
+  const subcategory = product && product.subcategoryId && category && category.subcategories
+    ? category.subcategories.find(sub => sub.id === product.subcategoryId)
+    : undefined;
+  
+  // Product images - use from product data or default
+  const productImages = product?.images && product.images.length > 0
+    ? product.images
+    : ['/img1.png', '/img2.png'];
+  
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % productImages.length);
+  };
+  
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + productImages.length) % productImages.length);
+  };
 
   const handleDownloadPDF = () => {
-    console.log(`Downloading PDF for product: ${product?.id}`);
+    if (product?.pdfPath) {
+      // Create a temporary link to download the PDF
+      const link = document.createElement('a');
+      link.href = product.pdfPath;
+      link.download = `${product.id}.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else {
+      console.log(`PDF not available for product: ${product?.id}`);
+    }
   };
 
   const handleClose = () => {
-    if (category) {
+    if (subcategory && category) {
+      navigate(`/products/${category.slug}/${subcategory.slug}`);
+    } else if (category) {
       navigate(`/products/${category.slug}`);
     } else {
       navigate('/products');
@@ -52,7 +87,10 @@ const ProductDetail: React.FC = () => {
       >
         {/* Back button */}
         <Link
-          to={`/products/${category.slug}`}
+          to={subcategory 
+            ? `/products/${category.slug}/${subcategory.slug}`
+            : `/products/${category.slug}`
+          }
           className="absolute top-8 left-8 inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
         >
           <ArrowLeft size={18} />
@@ -90,36 +128,11 @@ const ProductDetail: React.FC = () => {
             {product.description[language]}
           </motion.p>
 
-          {/* Product details */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="space-y-6 mb-10"
-          >
-            <div className="border-l-4 border-primary pl-4">
-              <span className="font-semibold text-foreground text-sm uppercase tracking-wider block mb-1">
-                {t('products.usage')}
-              </span>
-              <p className="text-muted-foreground">
-                {product.usage[language]}
-              </p>
-            </div>
-            <div className="border-l-4 border-primary pl-4">
-              <span className="font-semibold text-foreground text-sm uppercase tracking-wider block mb-1">
-                {t('products.packaging')}
-              </span>
-              <p className="text-muted-foreground">
-                {product.packaging[language]}
-              </p>
-            </div>
-          </motion.div>
-
           {/* Download button */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
           >
             <Button
               onClick={handleDownloadPDF}
@@ -149,8 +162,8 @@ const ProductDetail: React.FC = () => {
           <X size={24} className="text-white" />
         </button>
 
-        {/* Decorative elements */}
-        <div className="absolute inset-0 flex items-center justify-center">
+        {/* Decorative egg shapes - moved to the side */}
+        <div className="absolute inset-0 flex items-center justify-end pr-8 lg:pr-16 z-10">
           <div className="relative">
             {/* Abstract egg shapes */}
             <motion.div
@@ -171,6 +184,62 @@ const ProductDetail: React.FC = () => {
                 borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%',
               }}
             />
+          </div>
+        </div>
+
+        {/* Product image with navigation */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center z-20 px-8">
+          {/* Navigation arrows */}
+          <div className="relative w-full max-w-xs lg:max-w-sm flex items-center justify-center">
+            {/* Left arrow */}
+            <button
+              onClick={prevImage}
+              className="absolute left-0 w-10 h-10 rounded-full bg-white/30 hover:bg-white/50 flex items-center justify-center transition-colors z-30"
+              aria-label="Previous image"
+            >
+              <ChevronLeft size={24} className="text-white" />
+            </button>
+            
+            {/* Image */}
+            <motion.img
+              key={currentImageIndex}
+              src={productImages[currentImageIndex]}
+              alt={product.name[language]}
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ duration: 0.4 }}
+              className="w-full max-w-[140px] lg:max-w-[320px] object-contain"
+              style={{ 
+                filter: 'drop-shadow(0 10px 30px rgba(0, 0, 0, 0.15)) saturate(1.2) contrast(1.1) brightness(1.05)',
+                transform: 'rotate(5deg)'
+              }}
+            />
+            
+            {/* Right arrow */}
+            <button
+              onClick={nextImage}
+              className="absolute right-0 w-10 h-10 rounded-full bg-white/30 hover:bg-white/50 flex items-center justify-center transition-colors z-30"
+              aria-label="Next image"
+            >
+              <ChevronRight size={24} className="text-white" />
+            </button>
+          </div>
+          
+          {/* Dots indicator */}
+          <div className="flex gap-2 mt-6">
+            {productImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentImageIndex(index)}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  index === currentImageIndex 
+                    ? 'bg-white w-6' 
+                    : 'bg-white/40 hover:bg-white/60'
+                }`}
+                aria-label={`Go to image ${index + 1}`}
+              />
+            ))}
           </div>
         </div>
 

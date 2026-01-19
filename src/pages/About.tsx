@@ -38,38 +38,6 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      {/* History */}
-      <section className="py-20 bg-card">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <ScrollReveal>
-            <h2 className="font-display text-3xl font-semibold text-foreground mb-6 text-center">
-              {t('about.history.title')}
-            </h2>
-          </ScrollReveal>
-          <ScrollReveal delay={0.1}>
-            <p className="text-lg text-muted-foreground leading-relaxed text-center">
-              {t('about.history.text')}
-            </p>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* Mission */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <ScrollReveal direction="left">
-            <h2 className="font-display text-3xl font-semibold text-foreground mb-6 text-center">
-              {t('about.mission.title')}
-            </h2>
-          </ScrollReveal>
-          <ScrollReveal direction="right" delay={0.1}>
-            <p className="text-lg text-muted-foreground leading-relaxed text-center">
-              {t('about.mission.text')}
-            </p>
-          </ScrollReveal>
-        </div>
-      </section>
-
       {/* Values */}
       <section className="py-20 bg-secondary/30">
         <div className="container mx-auto px-4">
@@ -99,25 +67,65 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      {/* Company Info */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 max-w-2xl">
+      {/* Introduction */}
+      <section className="py-20 bg-card">
+        <div className="container mx-auto px-4 max-w-4xl">
           <ScrollReveal>
-            <div className="bg-card rounded-2xl p-8 shadow-sm border border-border">
-              <h3 className="font-display text-xl font-semibold text-foreground mb-4 text-center">
-                {t('contact.info.headquarters')}
-              </h3>
-              <div className="text-center text-muted-foreground space-y-2">
-                <p className="font-semibold text-foreground">DAUMA s.r.o.</p>
-                <p>IČO: 44169922</p>
-                <p>DIČ: 2022627717</p>
-                <p>IČ DPH: SK2022627717</p>
-                <p className="pt-2">Novomeského 24, 902 01 Pezinok, Slovensko</p>
-              </div>
+            <div className="prose prose-lg max-w-none">
+              <p className="text-lg text-muted-foreground leading-relaxed whitespace-pre-line">
+                {t('about.intro')}
+              </p>
             </div>
           </ScrollReveal>
         </div>
       </section>
+
+      {/* Production */}
+      <section className="py-20">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <ScrollReveal>
+            <h2 className="font-display text-3xl font-semibold text-foreground mb-6">
+              {t('about.production.title')}
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <div className="prose prose-lg max-w-none">
+              <p className="text-lg text-muted-foreground leading-relaxed whitespace-pre-line">
+                {t('about.production.text')}
+              </p>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Safety */}
+      <section className="py-20 bg-card">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <ScrollReveal>
+            <h2 className="font-display text-3xl font-semibold text-foreground mb-6">
+              {t('about.safety.title')}
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <div className="prose prose-lg max-w-none">
+              <p className="text-lg text-muted-foreground leading-relaxed whitespace-pre-line mb-8">
+                {t('about.safety.text')}
+              </p>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal delay={0.2}>
+            {/* ISO 9001 Certificate */}
+            <div className="mt-8">
+              <img
+                src="/certificate.png"
+                alt="ISO 9001 Certificate"
+                className="w-full h-auto rounded-lg"
+              />
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
     </div>
   );
 };

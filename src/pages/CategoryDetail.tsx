@@ -1,10 +1,11 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getCategoryBySlug, getProductsByCategory } from '@/data/products';
 import CategoryCircle from '@/components/ui/CategoryCircle';
+import ProductCircle from '@/components/ui/ProductCircle';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import { categories } from '@/data/products';
 
@@ -33,7 +34,7 @@ const CategoryDetail: React.FC = () => {
   return (
     <div className="blob-pattern min-h-screen">
       {/* Back button */}
-      <div className="container mx-auto px-4 pt-8">
+      <div className="container mx-auto px-4 pt-24">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -70,54 +71,31 @@ const CategoryDetail: React.FC = () => {
         </div>
       </section>
 
-      {/* Products list - now as clickable links */}
+      {/* Products as circles */}
       <section className="py-12 pb-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto space-y-4">
-            {products.map((product, index) => (
-              <motion.div
-                key={product.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-              >
-                <Link
-                  to={`/product/${product.id}`}
-                  className="group flex items-center justify-between p-6 bg-card rounded-xl border border-border hover:border-primary hover:shadow-lg transition-all duration-300"
+          {products.length > 0 ? (
+            // Display products as circles
+            <div className="flex flex-wrap justify-center gap-10 md:gap-14 lg:gap-20">
+              {products.map((product, index) => (
+                <ScrollReveal
+                  key={product.id}
+                  delay={index * 0.1}
                 >
-                  <div className="flex items-center gap-5">
-                    {/* Egg-shaped circle like main categories */}
-                    <div 
-                      className="w-14 h-14 rounded-full flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300"
-                      style={{ backgroundColor: 'hsl(45, 93%, 58%)' }}
-                    >
-                      <svg 
-                        viewBox="0 0 24 32" 
-                        className="w-6 h-8 text-white"
-                        fill="currentColor"
-                      >
-                        <ellipse cx="12" cy="18" rx="10" ry="13" />
-                        <ellipse cx="12" cy="12" rx="8" ry="10" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="font-display text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
-                        {product.name[language]}
-                      </h3>
-                      <p className="text-sm text-muted-foreground line-clamp-1">
-                        {product.description[language]}
-                      </p>
-                    </div>
-                  </div>
-                  <ArrowRight 
-                    size={20} 
-                    className="text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" 
+                  <ProductCircle 
+                    product={product} 
+                    size="xl" 
                   />
-                </Link>
-              </motion.div>
-            ))}
-          </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground">
+                {t('products.noProducts') || 'No products available in this category yet.'}
+              </p>
+            </div>
+          )}
         </div>
       </section>
 

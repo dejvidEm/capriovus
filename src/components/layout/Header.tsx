@@ -54,16 +54,18 @@ const Header: React.FC = () => {
     <>
       {/* Floating pill navbar */}
       <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl">
-        <nav className={`flex items-center justify-between px-4 md:px-6 py-3 rounded-full transition-all duration-500 ${
+        <nav className={`flex items-center justify-between px-8 md:px-10 py-5 rounded-full transition-all duration-500 ${
           isScrolled 
-            ? 'bg-white shadow-lg border border-border/50' 
+            ? 'bg-white shadow-lg border border-border/50 shadow-blue/5' 
             : 'bg-white border border-border/30'
         }`}>
           {/* Logo - left */}
           <Link to="/" className="flex items-center gap-2 group">
-            <span className="font-display font-semibold tracking-wider text-foreground text-lg md:text-xl">
-              CAPRIOVUS
-            </span>
+            <img 
+              src="/capriovus.webp" 
+              alt="Capriovus" 
+              className="h-8 md:h-10 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop navigation - center */}
@@ -72,10 +74,10 @@ const Header: React.FC = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
+                className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 border ${
                   isActive(item.path)
-                    ? 'bg-primary/10 text-primary-dark'
-                    : 'text-foreground/80 hover:text-foreground hover:bg-secondary/50'
+                    ? 'bg-primary/10 text-primary-dark border-blue/20'
+                    : 'text-foreground/80 hover:text-foreground hover:bg-secondary/50 border-transparent hover:border-blue/30'
                 }`}
               >
                 {item.label}
@@ -90,10 +92,10 @@ const Header: React.FC = () => {
             >
               <Link
                 to="/products"
-                className={`flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
+                className={`flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 border ${
                   isActive('/products')
-                    ? 'bg-primary/10 text-primary-dark'
-                    : 'text-foreground/80 hover:text-foreground hover:bg-secondary/50'
+                    ? 'bg-primary/10 text-primary-dark border-blue/20'
+                    : 'text-foreground/80 hover:text-foreground hover:bg-secondary/50 border-transparent hover:border-blue/30'
                 }`}
               >
                 {t('nav.products')}
@@ -104,19 +106,20 @@ const Header: React.FC = () => {
               <AnimatePresence>
                 {isProductsOpen && (
                   <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: 10, x: '-50%' }}
+                    animate={{ opacity: 1, y: 0, x: '-50%' }}
+                    exit={{ opacity: 0, y: 10, x: '-50%' }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 pt-4 z-50"
+                    className="absolute top-full left-1/2 pt-4 z-50"
                   >
-                    <div className="bg-card border border-border rounded-2xl shadow-xl p-6 min-w-[600px]">
+                    <div className="bg-card border border-border rounded-2xl shadow-xl shadow-blue/5 p-6 min-w-[600px]">
                       <div className="grid grid-cols-5 gap-6">
                         {categories.map((category) => (
                           <CategoryCircle
                             key={category.id}
                             category={category}
                             size="md"
+                            showLogo={false}
                           />
                         ))}
                       </div>
@@ -130,10 +133,10 @@ const Header: React.FC = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
+                className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 border ${
                   isActive(item.path)
-                    ? 'bg-primary/10 text-primary-dark'
-                    : 'text-foreground/80 hover:text-foreground hover:bg-secondary/50'
+                    ? 'bg-primary/10 text-primary-dark border-blue/20'
+                    : 'text-foreground/80 hover:text-foreground hover:bg-secondary/50 border-transparent hover:border-blue/30'
                 }`}
               >
                 {item.label}
@@ -144,15 +147,15 @@ const Header: React.FC = () => {
           {/* Right side: Language switch + mobile menu */}
           <div className="flex items-center gap-2">
             {/* Language switcher - desktop */}
-            <div className="hidden md:flex items-center gap-1 bg-secondary/50 rounded-full p-1">
+            <div className="hidden md:flex items-center gap-1 bg-secondary/50 rounded-full p-1 border border-blue/10">
               {languages.map((lang) => (
                 <button
                   key={lang.code}
                   onClick={() => setLanguage(lang.code)}
                   className={`px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-300 ${
                     language === lang.code
-                      ? 'bg-primary text-primary-foreground'
-                      : 'text-muted-foreground hover:text-foreground'
+                      ? 'bg-primary text-primary-foreground ring-2 ring-blue/30'
+                      : 'text-muted-foreground hover:text-foreground hover:text-blue-dark'
                   }`}
                 >
                   {lang.label}
@@ -173,7 +176,7 @@ const Header: React.FC = () => {
       </header>
 
       {/* Header spacer */}
-      <div className="h-24" />
+      <div className="h-8" />
 
       {/* Mobile menu overlay */}
       <AnimatePresence>
@@ -224,10 +227,10 @@ const Header: React.FC = () => {
                           <>
                             <button
                               onClick={() => setIsProductsOpen(!isProductsOpen)}
-                              className={`w-full flex items-center justify-between px-4 py-4 rounded-xl transition-colors text-left ${
+                              className={`w-full flex items-center justify-between px-4 py-4 rounded-xl transition-colors text-left border ${
                                 isActive(item.path)
-                                  ? 'bg-primary/10 text-primary-dark'
-                                  : 'text-foreground hover:bg-secondary'
+                                  ? 'bg-primary/10 text-primary-dark border-blue/20'
+                                  : 'text-foreground hover:bg-secondary border-transparent hover:border-blue/20'
                               }`}
                             >
                               <span className="font-medium">{item.label}</span>
@@ -264,10 +267,10 @@ const Header: React.FC = () => {
                           <Link
                             to={item.path}
                             onClick={() => setIsMobileMenuOpen(false)}
-                            className={`block px-4 py-4 rounded-xl transition-colors font-medium ${
+                            className={`block px-4 py-4 rounded-xl transition-colors font-medium border ${
                               isActive(item.path)
-                                ? 'bg-primary/10 text-primary-dark'
-                                : 'text-foreground hover:bg-secondary'
+                                ? 'bg-primary/10 text-primary-dark border-blue/20'
+                                : 'text-foreground hover:bg-secondary border-transparent hover:border-blue/20'
                             }`}
                           >
                             {item.label}
@@ -285,10 +288,10 @@ const Header: React.FC = () => {
                       <button
                         key={lang.code}
                         onClick={() => setLanguage(lang.code)}
-                        className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
+                        className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 border ${
                           language === lang.code
-                            ? 'bg-primary text-primary-foreground'
-                            : 'bg-secondary text-muted-foreground hover:text-foreground'
+                            ? 'bg-primary text-primary-foreground border-blue/30 ring-2 ring-blue/20'
+                            : 'bg-secondary text-muted-foreground hover:text-foreground border-transparent hover:border-blue/20 hover:text-blue-dark'
                         }`}
                       >
                         {lang.label}

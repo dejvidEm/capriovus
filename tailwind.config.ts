@@ -14,8 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Playfair Display', 'serif'],
+        display: ['Inter', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -44,6 +45,11 @@ export default {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+        },
+        blue: {
+          DEFAULT: "hsl(var(--blue-accent))",
+          light: "hsl(var(--blue-accent-light))",
+          dark: "hsl(var(--blue-accent-dark))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
