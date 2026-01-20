@@ -82,7 +82,7 @@ const ProductDetail: React.FC = () => {
         {/* Back button */}
         <Link
           to={`/products/${category.slug}`}
-          className="absolute top-8 left-8 inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+          className="absolute top-20 md:top-8 left-4 md:left-8 inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors z-10"
         >
           <ArrowLeft size={18} />
           {t('products.back')}
