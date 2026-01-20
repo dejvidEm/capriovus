@@ -85,7 +85,7 @@ const CategoryCircle: React.FC<CategoryCircleProps> = ({ category, size = 'lg', 
       {/* Circle with image and quality badge */}
       <div className={`circle-category-image ${sizeClasses[size]} relative overflow-visible`}>
         <img
-          src={categoryImages[category.image]}
+          src={category.imagePath || categoryImages[category.image]}
           alt={category.name[language]}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 rounded-full"
         />

@@ -57,6 +57,7 @@ export interface Category {
     hu: string;
   };
   image: string;
+  imagePath?: string;
   subcategories?: Subcategory[];
 }
 
@@ -75,6 +76,7 @@ export const categories: Category[] = [
       hu: 'Kiváló minőségű folyékony tojástermékek az élelmiszeripar számára.',
     },
     image: 'liquid',
+    imagePath: '/1.png',
     subcategories: [
       {
         id: 'liquid-whole-100',
@@ -132,6 +134,7 @@ export const categories: Category[] = [
       hu: 'Prémium ToTu márkás termékek az igényes fogyasztók számára.',
     },
     image: 'totu',
+    imagePath: '/3.png',
     subcategories: [
       {
         id: 'totu-product-clumps',
@@ -209,6 +212,7 @@ export const categories: Category[] = [
       hu: 'Frissen főtt és hámozott tojások, azonnal felhasználhatók.',
     },
     image: 'boiled',
+    imagePath: '/2.png',
     subcategories: [
       {
         id: 'boiled-peeled-brine',
@@ -242,6 +246,7 @@ export const categories: Category[] = [
       hu: 'Hosszú eltarthatósági idejű tojáspor különféle alkalmazásokhoz.',
     },
     image: 'dried',
+    imagePath: '/6.png',
     subcategories: [
       {
         id: 'dried-whole-100',
@@ -304,6 +309,7 @@ export const categories: Category[] = [
       hu: 'Innovatív tojásrudak, ideálisak a vendéglátás és éttermek számára.',
     },
     image: 'sticks',
+    imagePath: '/7.png',
     subcategories: [
       {
         id: 'sticks-whole-100',
