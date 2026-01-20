@@ -157,24 +157,24 @@ const Contact: React.FC = () => {
               </div>
             </ScrollReveal>
 
-            {/* Contact Info */}
-            <ScrollReveal direction="right">
-              <div className="bg-card rounded-2xl p-6 md:p-8 border border-border">
-                <h2 className="font-display text-2xl font-semibold text-foreground mb-6">
-                  {t('contact.info.title')}
-                </h2>
-                
-                <div className="space-y-6">
+              {/* Contact Info */}
+              <ScrollReveal direction="right">
+                <div className="bg-card rounded-2xl p-6 md:p-8 border border-border">
+                  <h2 className="font-display text-2xl font-semibold text-foreground mb-6">
+                    {t('contact.info.title')}
+                  </h2>
+                  
+                  <div className="space-y-6">
                   {/* Headquarters */}
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                      <MapPin className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <span className="block text-sm font-medium text-foreground mb-1">
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                        <MapPin className="w-5 h-5 text-primary" />
+                      </div>
+                      <div>
+                        <span className="block text-sm font-medium text-foreground mb-1">
                         {t('contact.info.headquartersLabel')}
-                      </span>
-                      <span className="text-muted-foreground">
+                        </span>
+                        <span className="text-muted-foreground">
                         {contactInfo.headquarters}
                       </span>
                     </div>
@@ -233,7 +233,7 @@ const Contact: React.FC = () => {
                   <div className="pt-4 border-t border-border">
                     <span className="block text-sm font-medium text-foreground mb-3">
                       {t('contact.info.orders')}
-                    </span>
+                        </span>
                     <div className="space-y-2">
                       <div className="flex items-start gap-4">
                         <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
@@ -260,26 +260,26 @@ const Contact: React.FC = () => {
                           </a>
                         </div>
                       </div>
+                      </div>
                     </div>
-                  </div>
 
                   {/* Mobile Phone */}
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                      <Phone className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <span className="block text-sm font-medium text-foreground mb-1">
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                        <Phone className="w-5 h-5 text-primary" />
+                      </div>
+                      <div>
+                        <span className="block text-sm font-medium text-foreground mb-1">
                         {t('contact.info.mobile')}
-                      </span>
-                      <a 
+                        </span>
+                        <a 
                         href={`tel:${contactInfo.mobile.replace(/\s/g, '')}`}
-                        className="text-primary hover:text-primary-dark transition-colors font-medium"
-                      >
+                          className="text-primary hover:text-primary-dark transition-colors font-medium"
+                        >
                         {contactInfo.mobile}
-                      </a>
+                        </a>
+                      </div>
                     </div>
-                  </div>
 
                   {/* Orders Email */}
                   <div className="flex items-start gap-4">
@@ -312,8 +312,8 @@ const Contact: React.FC = () => {
             <h2 className="font-display text-3xl font-semibold text-foreground mb-12 text-center">
               {t('contact.locations.title')}
             </h2>
-          </ScrollReveal>
-          
+              </ScrollReveal>
+
           <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {/* Factory 1 Map */}
             <ScrollReveal direction="left">
@@ -364,8 +364,8 @@ const Contact: React.FC = () => {
                     {locations.factory2}
                   </p>
                 </div>
-              </div>
-            </ScrollReveal>
+                </div>
+              </ScrollReveal>
 
             {/* Store Map */}
             <ScrollReveal direction="right" delay={0.2}>
@@ -390,7 +390,7 @@ const Contact: React.FC = () => {
                     {locations.store}
                   </p>
                 </div>
-              </div>
+            </div>
             </ScrollReveal>
           </div>
         </div>

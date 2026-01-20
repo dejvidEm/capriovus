@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -8,10 +8,6 @@ import ScrollReveal from '@/components/ui/ScrollReveal';
 
 const Index: React.FC = () => {
   const { t } = useLanguage();
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
 
   return (
     <div>
@@ -32,9 +28,9 @@ const Index: React.FC = () => {
                   <img 
                     src="/quality.png" 
                     alt="Quality" 
-                    className="h-16 w-16 sm:h-20 sm:w-20 lg:h-24 lg:w-24 object-contain absolute -left-4 sm:-left-5 lg:-left-6 -top-8 sm:-top-10 lg:-top-12 z-10"
+                    className="h-24 w-24 object-contain absolute -left-6 -top-12 z-10"
                   />
-                  <span className="text-xs sm:text-sm font-medium text-slate-700 ml-12 sm:ml-14">
+                  <span className="text-sm font-medium text-slate-700 ml-14">
                     {(() => {
                       const badgeText = t('home.hero.badge');
                       const parts = badgeText.split('BUREAU VERITAS');
@@ -133,21 +129,21 @@ const Index: React.FC = () => {
               initial={{ opacity: 0, scale: 0.9, x: 40 }}
               animate={{ opacity: 1, scale: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-              className="order-1 lg:order-2 flex justify-center lg:justify-end items-center relative overflow-hidden mt-16 sm:mt-20 md:mt-24 lg:mt-0"
+              className="order-1 lg:order-2 flex justify-center lg:justify-end items-center relative"
             >
               {/* Cloud shape behind images */}
-              <div className="hidden lg:block absolute -right-[850px] top-2/3 -translate-y-1/2 z-0">
+              <div className="absolute -right-[850px] top-2/3 -translate-y-1/2 z-0">
                 <svg viewBox="0 0 400 300" className="w-full h-auto" style={{ width: '2000px', height: '1500px', maxWidth: 'none' }}>
                   <path d="M100,150 Q80,120 100,100 Q120,80 150,100 Q180,70 220,80 Q260,60 300,80 Q320,100 300,120 Q330,130 320,150 Q330,170 300,180 Q260,200 220,190 Q180,210 150,200 Q120,220 100,200 Q80,180 100,150 Z" fill="white" />
                 </svg>
               </div>
-              <div className="relative flex items-center z-20 max-w-full">
+              <div className="relative flex items-center z-20">
                 {/* First Image - img2 on left, positioned lower */}
                 <motion.img
                   src="/img2.png"
                   alt="Capriovus Products"
-                  className="w-full max-w-[180px] sm:max-w-[220px] md:max-w-xs lg:max-w-sm mx-auto lg:mx-0 object-contain relative z-10"
-                  style={{ transform: 'rotate(-5deg)', filter: 'drop-shadow(0 10px 30px rgba(0, 0, 0, 0.15))' }}
+                  className="w-full max-w-[160px] sm:max-w-[180px] md:max-w-xs lg:max-w-sm mx-auto lg:mx-0 object-contain relative z-10"
+                  style={{ transform: 'rotate(-5deg)', filter: 'drop-shadow(0 10px 30px rgba(0, 0, 0, 0.15))', marginTop: '430px' }}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: 0.3 }}
@@ -156,7 +152,7 @@ const Index: React.FC = () => {
                 <motion.img
                   src="/img1.png"
                   alt="Capriovus Products"
-                  className="w-full max-w-[180px] sm:max-w-[220px] md:max-w-xs lg:max-w-sm mx-auto lg:mx-0 object-contain relative -ml-6 sm:-ml-8 md:-ml-10 lg:-ml-16"
+                  className="w-full max-w-[160px] sm:max-w-[180px] md:max-w-xs lg:max-w-sm mx-auto lg:mx-0 object-contain relative -ml-12 lg:-ml-16"
                   style={{ transform: 'rotate(15deg)', filter: 'drop-shadow(0 10px 30px rgba(0, 0, 0, 0.15)) saturate(1.2) contrast(1.1) brightness(1.05)' }}
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -177,7 +173,7 @@ const Index: React.FC = () => {
             </h2>
           </ScrollReveal>
 
-          <div className="flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-12 lg:gap-16">
+          <div className="flex flex-wrap justify-center gap-8 md:gap-12 lg:gap-16">
             {categories.map((category, index) => (
               <ScrollReveal
                 key={category.id}

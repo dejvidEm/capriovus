@@ -182,9 +182,6 @@ const Header: React.FC = () => {
         </nav>
       </header>
 
-      {/* Header spacer */}
-      <div className="h-8" />
-
       {/* Mobile menu overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (

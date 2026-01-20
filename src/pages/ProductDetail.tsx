@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, FileDown, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowLeft, FileDown, X } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { 
@@ -33,14 +33,6 @@ const ProductDetail: React.FC = () => {
     ? product.images
     : ['/img1.png', '/img2.png'];
   
-  const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % productImages.length);
-  };
-  
-  const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + productImages.length) % productImages.length);
-  };
-
   const handleDownloadPDF = () => {
     if (product?.pdfPath) {
       // Create a temporary link to download the PDF
@@ -56,9 +48,7 @@ const ProductDetail: React.FC = () => {
   };
 
   const handleClose = () => {
-    if (subcategory && category) {
-      navigate(`/products/${category.slug}/${subcategory.slug}`);
-    } else if (category) {
+    if (category) {
       navigate(`/products/${category.slug}`);
     } else {
       navigate('/products');
@@ -91,10 +81,7 @@ const ProductDetail: React.FC = () => {
       >
         {/* Back button */}
         <Link
-          to={subcategory 
-            ? `/products/${category.slug}/${subcategory.slug}`
-            : `/products/${category.slug}`
-          }
+          to={`/products/${category.slug}`}
           className="absolute top-8 left-8 inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
         >
           <ArrowLeft size={18} />
@@ -191,19 +178,9 @@ const ProductDetail: React.FC = () => {
           </div>
         </div>
 
-        {/* Product image with navigation */}
+        {/* Product image */}
         <div className="absolute inset-0 flex flex-col items-center justify-center z-20 px-8">
-          {/* Navigation arrows */}
           <div className="relative w-full max-w-xs lg:max-w-sm flex items-center justify-center">
-            {/* Left arrow */}
-            <button
-              onClick={prevImage}
-              className="absolute left-0 w-10 h-10 rounded-full bg-white/30 hover:bg-white/50 flex items-center justify-center transition-colors z-30"
-              aria-label="Previous image"
-            >
-              <ChevronLeft size={24} className="text-white" />
-            </button>
-            
             {/* Image */}
             <motion.img
               key={currentImageIndex}
@@ -219,15 +196,6 @@ const ProductDetail: React.FC = () => {
                 transform: 'rotate(5deg)'
               }}
             />
-            
-            {/* Right arrow */}
-            <button
-              onClick={nextImage}
-              className="absolute right-0 w-10 h-10 rounded-full bg-white/30 hover:bg-white/50 flex items-center justify-center transition-colors z-30"
-              aria-label="Next image"
-            >
-              <ChevronRight size={24} className="text-white" />
-            </button>
           </div>
           
           {/* Dots indicator */}

@@ -173,9 +173,9 @@ const Tenders: React.FC = () => {
             </h2>
           </ScrollReveal>
           
-          <div className="grid gap-6">
+            <div className="grid gap-6">
             {tenders.map((tender, index) => (
-              <ScrollReveal key={tender.id} delay={index * 0.1}>
+                <ScrollReveal key={tender.id} delay={index * 0.1}>
                 <Link
                   to={`/tenders/${tender.slug}`}
                   className="block group"
@@ -199,9 +199,9 @@ const Tenders: React.FC = () => {
                     </div>
                   </div>
                 </Link>
-              </ScrollReveal>
-            ))}
-          </div>
+                </ScrollReveal>
+              ))}
+            </div>
         </div>
       </section>
 
