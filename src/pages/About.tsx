@@ -31,7 +31,7 @@ const About: React.FC = () => {
   return (
     <div className="blob-pattern">
       {/* Hero */}
-      <section className="py-24 text-center">
+      <section className="pt-36 pb-24 text-center">
         <div className="container mx-auto px-4">
           <ScrollReveal>
             <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">

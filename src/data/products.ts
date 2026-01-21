@@ -441,7 +441,7 @@ export const products: Product[] = [
     },
     images: ['/kartony/3.png'],
     pdfPath: '/pdf/white',
-  },
+    },
   {
     id: 'liquid-spec11',
     categoryId: 'liquid',
@@ -540,29 +540,29 @@ const createProductsFromSubcategories = (existingProducts: Product[]): Product[]
             productImages = subcategory.imagePath ? [subcategory.imagePath] : ['/img1.png'];
           }
           
-          subcategoryProducts.push({
-            id: subcategory.id,
-            categoryId: category.id,
+        subcategoryProducts.push({
+          id: subcategory.id,
+          categoryId: category.id,
             subcategoryId: subcategory.id,
-            name: subcategory.name,
-            description: subcategory.description || {
-              sk: `${subcategory.name.sk} - kvalitný produkt`,
-              en: `${subcategory.name.en} - quality product`,
-              hu: `${subcategory.name.hu} - minőségi termék`,
-            },
-            usage: {
-              sk: 'Rôzne potravinárske aplikácie',
-              en: 'Various food industry applications',
-              hu: 'Különféle élelmiszeripari alkalmazások',
-            },
-            packaging: {
-              sk: 'Rôzne veľkosti',
-              en: 'Various sizes',
-              hu: 'Különféle méretek',
-            },
+          name: subcategory.name,
+          description: subcategory.description || {
+            sk: `${subcategory.name.sk} - kvalitný produkt`,
+            en: `${subcategory.name.en} - quality product`,
+            hu: `${subcategory.name.hu} - minőségi termék`,
+          },
+          usage: {
+            sk: 'Rôzne potravinárske aplikácie',
+            en: 'Various food industry applications',
+            hu: 'Különféle élelmiszeripari alkalmazások',
+          },
+          packaging: {
+            sk: 'Rôzne veľkosti',
+            en: 'Various sizes',
+            hu: 'Különféle méretek',
+          },
             images: productImages,
             pdfPath: pdfPath,
-          });
+        });
         }
       });
     }

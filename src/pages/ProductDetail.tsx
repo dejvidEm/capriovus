@@ -72,13 +72,14 @@ const ProductDetail: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row">
-      {/* Content side - white background */}
-      <motion.div 
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6 }}
-        className="flex-1 bg-background p-8 lg:p-16 xl:p-24 flex flex-col justify-center relative"
-      >
+      <div className="w-full max-w-[1600px] mx-auto flex flex-col lg:flex-row">
+        {/* Content side - white background */}
+        <motion.div 
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="flex-1 bg-background p-8 lg:p-16 xl:p-24 flex flex-col justify-center relative"
+        >
         {/* Back button */}
         <Link
           to={`/products/${category.slug}`}
@@ -88,7 +89,7 @@ const ProductDetail: React.FC = () => {
           {t('products.back')}
         </Link>
 
-        <div className="max-w-xl mt-16 lg:mt-0">
+        <div className="max-w-xl mt-28 lg:mt-12">
           {/* Category label */}
           <motion.span
             initial={{ opacity: 0, y: 20 }}
@@ -235,6 +236,7 @@ const ProductDetail: React.FC = () => {
           </div>
         </div>
       </motion.div>
+      </div>
     </div>
   );
 };

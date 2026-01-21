@@ -33,6 +33,7 @@ const translations: Record<Language, Record<string, string>> = {
     'home.intro.title': 'Kvalita od roku 1993',
     'home.intro.text': 'Spoločnosť DAUMA s.r.o. je popredným slovenským výrobcom vaječných produktov. Naše výrobky spĺňajú najprísnejšie normy kvality a bezpečnosti.',
     'home.categories.title': 'Naše produkty',
+    'category.otherCategories': 'Dalšie produkty',
     
     // About page
     'about.title': 'O spoločnosti',
@@ -80,6 +81,7 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.info.orders': 'Objednávky, obchodné informácie',
     'contact.info.mobile': 'Mobilný telefón',
     'contact.info.ordersEmail': 'E-mail',
+    'contact.info.billing': 'Fakturačne údaje',
     'contact.locations.title': 'Lokalizácie',
     'contact.locations.factory1': 'Továreň 1',
     'contact.locations.factory2': 'Továreň 2',
@@ -134,6 +136,7 @@ const translations: Record<Language, Record<string, string>> = {
     'home.intro.title': 'Quality Since 1993',
     'home.intro.text': 'DAUMA s.r.o. is a leading Slovak manufacturer of egg products. Our products meet the strictest quality and safety standards.',
     'home.categories.title': 'Our Products',
+    'category.otherCategories': 'Other Products',
     
     // About page
     'about.title': 'About Us',
@@ -180,6 +183,7 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.info.orders': 'Orders, Business Information',
     'contact.info.mobile': 'Mobile Phone',
     'contact.info.ordersEmail': 'Email',
+    'contact.info.billing': 'Billing Information',
     'contact.locations.title': 'Locations',
     'contact.locations.factory1': 'Factory 1',
     'contact.locations.factory2': 'Factory 2',
@@ -234,6 +238,7 @@ const translations: Record<Language, Record<string, string>> = {
     'home.intro.title': 'Minőség 1993 óta',
     'home.intro.text': 'A DAUMA s.r.o. Szlovákia vezető tojástermék-gyártója. Termékeink megfelelnek a legszigorúbb minőségi és biztonsági előírásoknak.',
     'home.categories.title': 'Termékeink',
+    'category.otherCategories': 'További termékek',
     
     // About page
     'about.title': 'Rólunk',
@@ -280,6 +285,7 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.info.orders': 'Rendelések, üzleti információk',
     'contact.info.mobile': 'Mobiltelefon',
     'contact.info.ordersEmail': 'E-mail',
+    'contact.info.billing': 'Számlázási adatok',
     'contact.locations.title': 'Helyszínek',
     'contact.locations.factory1': 'Gyár 1',
     'contact.locations.factory2': 'Gyár 2',

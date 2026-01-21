@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import ScrollReveal from '@/components/ui/ScrollReveal';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 
 const Contact: React.FC = () => {
   const { t } = useLanguage();
@@ -45,7 +46,7 @@ const Contact: React.FC = () => {
       phone2: '+36 24 418 297',
       phone3: '+36 24 418 298',
     },
-    mobile: '+36 20 373 85 28',
+    mobile: '+421948056962',
     ordersEmail: 'szamlazas@capriovus.hu',
     store: '1147 Budapest, Telepes utca 51., Maďarsko',
   };
@@ -68,7 +69,7 @@ const Contact: React.FC = () => {
   return (
     <div className="blob-pattern min-h-screen">
       {/* Hero */}
-      <section className="py-24 text-center">
+      <section className="pt-36 pb-24 text-center">
         <div className="container mx-auto px-4">
           <ScrollReveal>
             <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
@@ -153,6 +154,59 @@ const Contact: React.FC = () => {
                       </span>
                     )}
                   </Button>
+
+                  {/* Contact Information */}
+                  <div className="pt-6 mt-6 border-t border-border space-y-4">
+                    <div>
+                      <span className="block text-sm font-medium text-foreground mb-2">
+                        {t('contact.info.orders')}
+                      </span>
+                      <div className="space-y-1">
+                        <a 
+                          href={`tel:${contactInfo.orders.phone1.replace(/\s/g, '')}`}
+                          className="block text-primary hover:text-primary-dark transition-colors font-medium text-sm"
+                        >
+                          {contactInfo.orders.phone1}
+                        </a>
+                        <a 
+                          href={`tel:${contactInfo.orders.phone2.replace(/\s/g, '')}`}
+                          className="block text-primary hover:text-primary-dark transition-colors font-medium text-sm"
+                        >
+                          {contactInfo.orders.phone2}
+                        </a>
+                        <a 
+                          href={`tel:${contactInfo.orders.phone3.replace(/\s/g, '')}`}
+                          className="block text-primary hover:text-primary-dark transition-colors font-medium text-sm"
+                        >
+                          {contactInfo.orders.phone3}
+                        </a>
+                      </div>
+                    </div>
+
+                    <div>
+                      <span className="block text-sm font-medium text-foreground mb-1">
+                        {t('contact.info.mobile')}
+                      </span>
+                      <a 
+                        href={`tel:${contactInfo.mobile.replace(/\s/g, '')}`}
+                        className="text-primary hover:text-primary-dark transition-colors font-medium text-sm"
+                      >
+                        {contactInfo.mobile}
+                      </a>
+                    </div>
+
+                    <div>
+                      <span className="block text-sm font-medium text-foreground mb-1">
+                        {t('contact.info.ordersEmail')}
+                      </span>
+                      <a 
+                        href={`mailto:${contactInfo.ordersEmail}`}
+                        className="text-primary hover:text-primary-dark transition-colors font-medium text-sm"
+                      >
+                        {contactInfo.ordersEmail}
+                      </a>
+                    </div>
+                  </div>
                 </form>
               </div>
             </ScrollReveal>
@@ -160,147 +214,241 @@ const Contact: React.FC = () => {
               {/* Contact Info */}
               <ScrollReveal direction="right">
                 <div className="bg-card rounded-2xl p-6 md:p-8 border border-border">
-                  <h2 className="font-display text-2xl font-semibold text-foreground mb-6">
-                    {t('contact.info.title')}
-                  </h2>
-                  
-                  <div className="space-y-6">
-                  {/* Headquarters */}
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                        <MapPin className="w-5 h-5 text-primary" />
-                      </div>
-                      <div>
-                        <span className="block text-sm font-medium text-foreground mb-1">
-                        {t('contact.info.headquartersLabel')}
-                        </span>
-                        <span className="text-muted-foreground">
-                        {contactInfo.headquarters}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Email */}
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                      <Mail className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <span className="block text-sm font-medium text-foreground mb-1">
-                        {t('contact.info.email')}
-                      </span>
-                      <a 
-                        href={`mailto:${contactInfo.email}`}
-                        className="text-primary hover:text-primary-dark transition-colors font-medium"
-                      >
-                        {contactInfo.email}
-                      </a>
-                    </div>
-                  </div>
-
-                  {/* Central Office */}
-                  <div className="pt-4 border-t border-border">
-                    <span className="block text-sm font-medium text-foreground mb-3">
-                      {t('contact.info.centralOffice')}
-                    </span>
-                    <div className="space-y-2">
-                      <div className="flex items-start gap-4">
-                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                          <Phone className="w-4 h-4 text-primary" />
+                  <Tabs defaultValue="contact" className="w-full">
+                    <TabsList className="grid w-full grid-cols-2 mb-6">
+                      <TabsTrigger value="contact">{t('contact.info.title')}</TabsTrigger>
+                      <TabsTrigger value="billing">{t('contact.info.billing')}</TabsTrigger>
+                    </TabsList>
+                    
+                    <TabsContent value="contact" className="space-y-6">
+                      {/* DAUMA Address */}
+                      <div className="pb-4 border-b border-border">
+                        <div className="space-y-1 text-sm text-muted-foreground">
+                          <div className="font-semibold text-foreground">DAUMA</div>
+                          <div>Za dráhou 21</div>
+                          <div>902 01 Pezinok</div>
+                          <div>Slovensko</div>
                         </div>
-                        <div className="space-y-1">
-                          <span className="text-sm text-muted-foreground">{t('contact.info.telFax')}</span>
-                          <div className="space-y-1">
-                            <a 
-                              href={`tel:${contactInfo.centralOffice.phone1.replace(/\s/g, '')}`}
-                              className="block text-primary hover:text-primary-dark transition-colors font-medium text-sm"
-                            >
-                              {contactInfo.centralOffice.phone1}
-                            </a>
-                            <a 
-                              href={`tel:${contactInfo.centralOffice.phone2.replace(/\s/g, '')}`}
-                              className="block text-primary hover:text-primary-dark transition-colors font-medium text-sm"
-                            >
-                              {contactInfo.centralOffice.phone2}
-                            </a>
+                      </div>
+
+                      {/* Headquarters */}
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                          <MapPin className="w-5 h-5 text-primary" />
+                        </div>
+                        <div>
+                          <span className="block text-sm font-medium text-foreground mb-1">
+                            {t('contact.info.headquartersLabel')}
+                          </span>
+                          <span className="text-muted-foreground">
+                            {contactInfo.headquarters}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Email */}
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                          <Mail className="w-5 h-5 text-primary" />
+                        </div>
+                        <div>
+                          <span className="block text-sm font-medium text-foreground mb-1">
+                            {t('contact.info.email')}
+                          </span>
+                          <a 
+                            href={`mailto:${contactInfo.email}`}
+                            className="text-primary hover:text-primary-dark transition-colors font-medium"
+                          >
+                            {contactInfo.email}
+                          </a>
+                        </div>
+                      </div>
+
+                      {/* Central Office */}
+                      <div className="pt-4 border-t border-border">
+                        <span className="block text-sm font-medium text-foreground mb-3">
+                          {t('contact.info.centralOffice')}
+                        </span>
+                        <div className="space-y-2">
+                          <div className="flex items-start gap-4">
+                            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                              <Phone className="w-4 h-4 text-primary" />
+                            </div>
+                            <div className="space-y-1">
+                              <span className="text-sm text-muted-foreground">{t('contact.info.telFax')}</span>
+                              <div className="space-y-1">
+                                <a 
+                                  href={`tel:${contactInfo.centralOffice.phone1.replace(/\s/g, '')}`}
+                                  className="block text-primary hover:text-primary-dark transition-colors font-medium text-sm"
+                                >
+                                  {contactInfo.centralOffice.phone1}
+                                </a>
+                                <a 
+                                  href={`tel:${contactInfo.centralOffice.phone2.replace(/\s/g, '')}`}
+                                  className="block text-primary hover:text-primary-dark transition-colors font-medium text-sm"
+                                >
+                                  {contactInfo.centralOffice.phone2}
+                                </a>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
 
-                  {/* Orders & Business Information */}
-                  <div className="pt-4 border-t border-border">
-                    <span className="block text-sm font-medium text-foreground mb-3">
-                      {t('contact.info.orders')}
-                        </span>
-                    <div className="space-y-2">
+                      {/* Mobile Phone */}
                       <div className="flex items-start gap-4">
-                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                          <Phone className="w-4 h-4 text-primary" />
+                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                          <Phone className="w-5 h-5 text-primary" />
                         </div>
-                        <div className="space-y-1">
+                        <div>
+                          <span className="block text-sm font-medium text-foreground mb-1">
+                            {t('contact.info.mobile')}
+                          </span>
                           <a 
-                            href={`tel:${contactInfo.orders.phone1.replace(/\s/g, '')}`}
-                            className="block text-primary hover:text-primary-dark transition-colors font-medium text-sm"
+                            href={`tel:${contactInfo.mobile.replace(/\s/g, '')}`}
+                            className="text-primary hover:text-primary-dark transition-colors font-medium"
                           >
-                            {contactInfo.orders.phone1}
-                          </a>
-                          <a 
-                            href={`tel:${contactInfo.orders.phone2.replace(/\s/g, '')}`}
-                            className="block text-primary hover:text-primary-dark transition-colors font-medium text-sm"
-                          >
-                            {contactInfo.orders.phone2}
-                          </a>
-                          <a 
-                            href={`tel:${contactInfo.orders.phone3.replace(/\s/g, '')}`}
-                            className="block text-primary hover:text-primary-dark transition-colors font-medium text-sm"
-                          >
-                            {contactInfo.orders.phone3}
+                            {contactInfo.mobile}
                           </a>
                         </div>
                       </div>
-                      </div>
-                    </div>
 
-                  {/* Mobile Phone */}
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                        <Phone className="w-5 h-5 text-primary" />
+                      {/* Orders Email */}
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                          <Mail className="w-5 h-5 text-primary" />
+                        </div>
+                        <div>
+                          <span className="block text-sm font-medium text-foreground mb-1">
+                            {t('contact.info.ordersEmail')}
+                          </span>
+                          <a 
+                            href={`mailto:${contactInfo.ordersEmail}`}
+                            className="text-primary hover:text-primary-dark transition-colors font-medium"
+                          >
+                            {contactInfo.ordersEmail}
+                          </a>
+                        </div>
                       </div>
-                      <div>
-                        <span className="block text-sm font-medium text-foreground mb-1">
-                        {t('contact.info.mobile')}
+                    </TabsContent>
+
+                    <TabsContent value="billing" className="space-y-6">
+                      {/* Billing Information */}
+                      <div className="space-y-1 text-sm text-muted-foreground">
+                        <div className="font-semibold text-foreground">DAUMA s.r.o.</div>
+                        <div>Novomeského 24</div>
+                        <div>902 01 Pezinok, SK</div>
+                        <div className="pt-2">
+                          <div>IČO 44169922</div>
+                          <div>DIČ 2022627717</div>
+                          <div>IČ DPH SK2022627717</div>
+                        </div>
+                      </div>
+
+
+                      {/* Headquarters */}
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                          <MapPin className="w-5 h-5 text-primary" />
+                        </div>
+                        <div>
+                          <span className="block text-sm font-medium text-foreground mb-1">
+                            {t('contact.info.headquartersLabel')}
+                          </span>
+                          <span className="text-muted-foreground">
+                            {contactInfo.headquarters}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Email */}
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                          <Mail className="w-5 h-5 text-primary" />
+                        </div>
+                        <div>
+                          <span className="block text-sm font-medium text-foreground mb-1">
+                            {t('contact.info.email')}
+                          </span>
+                          <a 
+                            href={`mailto:${contactInfo.email}`}
+                            className="text-primary hover:text-primary-dark transition-colors font-medium"
+                          >
+                            {contactInfo.email}
+                          </a>
+                        </div>
+                      </div>
+
+                      {/* Central Office */}
+                      <div className="pt-4 border-t border-border">
+                        <span className="block text-sm font-medium text-foreground mb-3">
+                          {t('contact.info.centralOffice')}
                         </span>
-                        <a 
-                        href={`tel:${contactInfo.mobile.replace(/\s/g, '')}`}
-                          className="text-primary hover:text-primary-dark transition-colors font-medium"
-                        >
-                        {contactInfo.mobile}
-                        </a>
+                        <div className="space-y-2">
+                          <div className="flex items-start gap-4">
+                            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                              <Phone className="w-4 h-4 text-primary" />
+                            </div>
+                            <div className="space-y-1">
+                              <span className="text-sm text-muted-foreground">{t('contact.info.telFax')}</span>
+                              <div className="space-y-1">
+                                <a 
+                                  href={`tel:${contactInfo.centralOffice.phone1.replace(/\s/g, '')}`}
+                                  className="block text-primary hover:text-primary-dark transition-colors font-medium text-sm"
+                                >
+                                  {contactInfo.centralOffice.phone1}
+                                </a>
+                                <a 
+                                  href={`tel:${contactInfo.centralOffice.phone2.replace(/\s/g, '')}`}
+                                  className="block text-primary hover:text-primary-dark transition-colors font-medium text-sm"
+                                >
+                                  {contactInfo.centralOffice.phone2}
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                    </div>
 
-                  {/* Orders Email */}
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                      <Mail className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <span className="block text-sm font-medium text-foreground mb-1">
-                        {t('contact.info.ordersEmail')}
-                      </span>
-                      <a 
-                        href={`mailto:${contactInfo.ordersEmail}`}
-                        className="text-primary hover:text-primary-dark transition-colors font-medium"
-                      >
-                        {contactInfo.ordersEmail}
-                      </a>
-                    </div>
-                  </div>
+                      {/* Mobile Phone */}
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                          <Phone className="w-5 h-5 text-primary" />
+                        </div>
+                        <div>
+                          <span className="block text-sm font-medium text-foreground mb-1">
+                            {t('contact.info.mobile')}
+                          </span>
+                          <a 
+                            href={`tel:${contactInfo.mobile.replace(/\s/g, '')}`}
+                            className="text-primary hover:text-primary-dark transition-colors font-medium"
+                          >
+                            {contactInfo.mobile}
+                          </a>
+                        </div>
+                      </div>
+
+                      {/* Orders Email */}
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                          <Mail className="w-5 h-5 text-primary" />
+                        </div>
+                        <div>
+                          <span className="block text-sm font-medium text-foreground mb-1">
+                            {t('contact.info.ordersEmail')}
+                          </span>
+                          <a 
+                            href={`mailto:${contactInfo.ordersEmail}`}
+                            className="text-primary hover:text-primary-dark transition-colors font-medium"
+                          >
+                            {contactInfo.ordersEmail}
+                          </a>
+                        </div>
+                      </div>
+                    </TabsContent>
+                  </Tabs>
                 </div>
-              </div>
-            </ScrollReveal>
+              </ScrollReveal>
           </div>
         </div>
       </section>

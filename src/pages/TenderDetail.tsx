@@ -220,7 +220,7 @@ const TenderDetail: React.FC = () => {
   return (
     <div className="min-h-screen bg-blue-50">
       {/* Hero */}
-      <section className="py-24">
+      <section className="pt-36 pb-24">
         <div className="container mx-auto px-4 max-w-4xl">
           <ScrollReveal>
             <Link

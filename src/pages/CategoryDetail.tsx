@@ -55,7 +55,7 @@ const CategoryDetail: React.FC = () => {
       </div>
 
       {/* Hero with large circle */}
-      <section className="py-16 text-center">
+      <section className="pt-28 pb-16 text-center">
         <div className="container mx-auto px-4">
           <ScrollReveal>
             <div className="flex justify-center mb-10">
@@ -108,7 +108,7 @@ const CategoryDetail: React.FC = () => {
         <div className="container mx-auto px-4">
           <ScrollReveal>
             <h2 className="font-display text-2xl font-semibold text-center text-foreground mb-12">
-              {t('home.categories.title')}
+              {t('category.otherCategories')}
             </h2>
           </ScrollReveal>
           <div className="flex flex-wrap justify-center gap-8 md:gap-12">

@@ -66,7 +66,7 @@ const SubcategoryDetail: React.FC = () => {
       </div>
 
       {/* Hero with subcategory circle */}
-      <section className="py-16 text-center">
+      <section className="pt-28 pb-16 text-center">
         <div className="container mx-auto px-4">
           <ScrollReveal>
             <div className="flex justify-center mb-10">
