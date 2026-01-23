@@ -13,9 +13,9 @@ const Footer: React.FC = () => {
     icDph: 'SK2022627717',
   };
 
-  const orderPhones = ['+36 24 418 296', '+36 24 418 297', '+36 24 418 298'];
+  const orderPhones = ['+1 234 567 8903', '+1 234 567 8904', '+1 234 567 8905'];
   const headquartersAddress = 'HU 2317 Szigetcsép,\nDunasor 073/72 hrsz.';
-  const headquartersPhones = ['+36 24 513 660', '+36 24 513 661'];
+  const headquartersPhones = ['+1 234 567 8901', '+1 234 567 8902'];
   const storeAddress = 'HU 1147 Budapest,\nTelepes utca 51.';
 
   return (

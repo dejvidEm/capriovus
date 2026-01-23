@@ -36,18 +36,18 @@ const Contact: React.FC = () => {
 
   const contactInfo = {
     headquarters: '2317 Szigetcsép, Dunasor 073/72 hrsz., Maďarsko',
-    email: 'capriovus@capriovus.hu',
+    email: 'adresa@gmail.com',
     centralOffice: {
-      phone1: '+36 24 513 660',
-      phone2: '+36 24 513 661',
+      phone1: '+1 234 567 8901',
+      phone2: '+1 234 567 8902',
     },
     orders: {
-      phone1: '+36 24 418 296',
-      phone2: '+36 24 418 297',
-      phone3: '+36 24 418 298',
+      phone1: '+1 234 567 8903',
+      phone2: '+1 234 567 8904',
+      phone3: '+1 234 567 8905',
     },
-    mobile: '+421948056962',
-    ordersEmail: 'szamlazas@capriovus.hu',
+    mobile: '+1 234 567 8906',
+    ordersEmail: 'adresa@gmail.com',
     store: '1147 Budapest, Telepes utca 51., Maďarsko',
   };
 

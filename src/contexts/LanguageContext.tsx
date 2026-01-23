@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useCallback } from 'react';
 
-export type Language = 'sk' | 'en' | 'hu';
+export type Language = 'sk' | 'en' | 'hu' | 'de';
 
 interface LanguageContextType {
   language: Language;
@@ -315,6 +315,113 @@ const translations: Record<Language, Record<string, string>> = {
     'footer.friday': 'Péntek',
     'footer.satSun': 'Szombat és vasárnap',
     'footer.closed': 'Zárva',
+  },
+  de: {
+    // Navigation
+    'nav.home': 'Startseite',
+    'nav.about': 'Über uns',
+    'nav.products': 'Produkte',
+    'nav.tenders': 'Ausschreibungen',
+    'nav.contact': 'Kontakt',
+    
+    // Product categories
+    'category.liquid': 'Flüssige Eier',
+    'category.boiled': 'Gekochte Eier',
+    'category.dried': 'Getrocknete Eier',
+    'category.sticks': 'Eierstäbchen',
+    'category.totu': 'ToTu Marke',
+    
+    // Home page
+    'home.hero.badge': 'Qualitätszeichen und BUREAU VERITAS Zertifikat',
+    'home.hero.title': 'Produkte aus frischen Eiern',
+    'home.hero.subtitle': 'Wenn es für Sie wichtig ist, qualitativ hochwertige Eiprodukte zu haben, die die strengsten Qualitäts- und Sicherheitsstandards erfüllen, dann sind Sie hier richtig.',
+    'home.hero.tagline': 'Willkommen bei Capriovus - Ihrem Eiprodukte-Lieferanten.',
+    'home.hero.cta': 'Mehr erfahren',
+    'home.intro.title': 'Qualität seit 1993',
+    'home.intro.text': 'DAUMA s.r.o. ist ein führender slowakischer Hersteller von Eiprodukten. Unsere Produkte erfüllen die strengsten Qualitäts- und Sicherheitsstandards.',
+    'home.categories.title': 'Unsere Produkte',
+    'category.otherCategories': 'Weitere Produkte',
+    
+    // About page
+    'about.title': 'Über uns',
+    'about.history.title': 'Unsere Geschichte',
+    'about.history.text': 'DAUMA s.r.o. ist seit 1993 auf dem Markt für Eiprodukte tätig. Seit über 30 Jahren sind wir ein zuverlässiger Partner für die Lebensmittelindustrie in der Slowakei und im Ausland.',
+    'about.mission.title': 'Unsere Mission',
+    'about.mission.text': 'Kunden qualitativ hochwertige Eiprodukte zu liefern, die die strengsten Sicherheits- und Qualitätsstandards erfüllen. Wir innovieren kontinuierlich und erweitern unser Portfolio.',
+    'about.intro': 'Unser Unternehmen im ausschließlichen Besitz ungarischer Gesellschafter kann auf eine mehr als ein Vierteljahrhundert lange Geschichte zurückblicken; im Jahr 1991 wurde die Gesellschaft in eine GmbH (Kft.) umgewandelt. Unsere Haupttätigkeit ist die Verarbeitung von Eiern, die Herstellung von Eiprodukten, die Verpackung von Eiern sowie die Verwertung von Nebenprodukten, die während des Verarbeitungsprozesses entstehen.\n\nIn unseren Werken stellen wir verschiedene flüssige pasteurisierte Eiprodukte, getrocknete Eiprodukte, Produkte aus geschälten gekochten Eiern, gekochten Eierstäbchen und Produkte mit desinfizierter Eierschale her. In unseren Verpackungsbetrieben beschäftigen wir uns mit der Sortierung und Verpackung frischer Eier.\n\nAus den bei der Verarbeitung entstehenden Nebenprodukten, aus Eierschale und aus Futtermitteltrockeneiern stellen wir Futtermittelprodukte her, die insbesondere für Haustiere entwickelt wurden.',
+    'about.production.title': 'Produktion',
+    'about.production.text': 'Der Sitz und gleichzeitig das Handelszentrum unseres Unternehmens befindet sich unter der Adresse 2317 Szigetcsép, Dunasor 073/72 hrsz. (Ungarn), wo wir auch administrative Tätigkeiten ausüben.\n\nUnseren Laden finden Sie unter der Adresse 1147 Budapest, Telepes utca 51.\n\nIn der Niederlassung in Szigetcsép betreiben wir mehrere getrennte Werke. In einem davon erfolgt die Herstellung flüssiger Eiprodukte und durch deren Trocknung die Produktion getrockneter Eiprodukte; im zweiten Werk werden geschälte gekochte Eier sowie Produkte aus Eierstäbchen zubereitet; im dritten erfolgt die Zubereitung von Produkten mit desinfizierter Eierschale; im vierten erfolgt die Herstellung von Lebensmitteln und Lebensmittelzusatzstoffen der Marke ToTu durch verschiedene Verarbeitung von Eiklar; und schließlich erfolgt im Werk zur Verwertung von Nebenprodukten die Herstellung von Futtermittelprodukten.\n\nUnser Unternehmen hat in den vergangenen Jahren eine dynamische Entwicklung durchlaufen, wodurch unser Umsatz sowie unsere Einnahmen um ein Vielfaches gestiegen sind; derzeit sind wir bereits in mehreren europäischen Ländern tätig.',
+    'about.safety.title': 'Sicherheit',
+    'about.safety.text': 'Unser Fuhrpark besteht aus modernen Geräten der Marken Sanovo, Bergmeier, Sondex und Actini, deren technische Ausstattung sowie technologische Zuverlässigkeit eine Garantie für die hohe Qualität der Produkte sind.\n\nDie Qualität der Produkte garantieren wir neben der kontinuierlichen Entwicklung der technologischen Ausstattung auch durch geeignete Qualitätsmanagementsysteme. In unseren Werken haben wir das Qualitätsmanagementsystem ISO 9002 im Jahr 1998 und ISO 9001 zusammen mit dem integrierten HAACP-System im Jahr 2002 implementiert. Die Wiederautorisierung der Systeme alle drei Jahre sowie die regelmäßige jährliche Zertifizierungsinspektion wurde (und wird) von der Zertifizierungsgesellschaft Bureau Veritas durchgeführt. Die Systeme verfolgen Änderungen der Standards in Übereinstimmung mit den geltenden Vorschriften; diese Tatsache wird von der Zertifizierungsgesellschaft überprüft und bestätigt. Die EU-Kontrollnummer des Werks zur Herstellung von Eifluid und Eipulver in Szigetcsép ist HU 343, und des Werks für gekochte Eier ist HU 913. Die Registrierungsnummer des Werks zur Desinfektion von Eierschale ist HU-12-TCS-008, der Werke zur Futtermittelherstellung HU 13 1 00135 und HU 13 1 00136.\n\nNeben der hervorragenden Qualität unserer Produkte halten wir es für wichtig, gute Beziehungen zu unseren Kunden aufzubauen und das gewonnene Vertrauen zu erhalten.\n\nUnsere Produkte werden mit maximaler Rücksicht auf die Anforderungen der Kunden im ganzen Land verteilt und auf der Grundlage besonderer Vereinbarungen ins Ausland geliefert. Unsere Handelsvertreter sind in jeder inländischen Region präsent. In den Nachbarländern haben wir bedeutende Partnerschaftsbeziehungen aufgebaut.\n\nDas Ergebnis unseres Bemühens ist, dass wir unter unseren Partnern fast alle ungarischen und mehrere bedeutende ausländische Lebensmittelverarbeitungsbetriebe haben.',
+    'about.values.title': 'Unsere Werte',
+    'about.values.quality': 'Qualität',
+    'about.values.quality.text': 'Strenge Qualitätskontrollen in jedem Schritt der Produktion',
+    'about.values.innovation': 'Innovation',
+    'about.values.innovation.text': 'Kontinuierliche Verbesserung von Prozessen und Produkten',
+    'about.values.trust': 'Vertrauen',
+    'about.values.trust.text': 'Langfristige Partnerschaften auf Zuverlässigkeit aufgebaut',
+    
+    // Tenders page
+    'tenders.title': 'Ausschreibungen und Förderungen',
+    'tenders.current.title': 'Aktuelle Ausschreibungen',
+    'tenders.archive.title': 'Archiv',
+    'tenders.noactive': 'Derzeit gibt es keine aktiven Ausschreibungen.',
+    'tenders.readMore': 'Mehr lesen',
+    'tenders.back': 'Zurück zu Ausschreibungen',
+    'tenders.notFound': 'Ausschreibung nicht gefunden',
+    'tenders.contact.title': 'Haben Sie Fragen?',
+    'tenders.contact.text': 'Kontaktieren Sie uns für weitere Informationen zu Ausschreibungen und Förderungen.',
+    'tenders.contact.cta': 'Kontaktieren Sie uns',
+    
+    // Contact page
+    'contact.title': 'Kontakt',
+    'contact.form.title': 'Schreiben Sie uns',
+    'contact.form.name': 'Name',
+    'contact.form.email': 'E-Mail',
+    'contact.form.message': 'Nachricht',
+    'contact.form.submit': 'Nachricht senden',
+    'contact.form.sending': 'Wird gesendet...',
+    'contact.info.title': 'Kontaktinformationen',
+    'contact.info.address': 'Geschäftsadresse',
+    'contact.info.phone': 'Telefon',
+    'contact.info.headquarters': 'Hauptsitz',
+    'contact.info.headquartersLabel': 'Hauptsitz',
+    'contact.info.email': 'E-Mail',
+    'contact.info.centralOffice': 'Zentrale',
+    'contact.info.telFax': 'Tel./Fax:',
+    'contact.info.orders': 'Bestellungen, Geschäftsinformationen',
+    'contact.info.mobile': 'Mobiltelefon',
+    'contact.info.ordersEmail': 'E-Mail',
+    'contact.info.billing': 'Rechnungsdaten',
+    'contact.locations.title': 'Standorte',
+    'contact.locations.factory1': 'Fabrik 1',
+    'contact.locations.factory2': 'Fabrik 2',
+    'contact.locations.store': 'Geschäft',
+    'contact.toast.title': 'Nachricht gesendet!',
+    'contact.toast.description': 'Wir werden uns so bald wie möglich bei Ihnen melden.',
+    
+    // Products
+    'products.title': 'Unsere Produkte',
+    'products.more': 'Weitere Informationen',
+    'products.back': 'Zurück zu Produkten',
+    'products.usage': 'Verwendung',
+    'products.downloadPdf': 'PDF herunterladen',
+    'products.packaging': 'Verpackung',
+    'products.description': 'Beschreibung',
+    
+    // Footer
+    'footer.company': 'CAPRIOVUS',
+    'footer.rights': 'Alle Rechte vorbehalten.',
+    'footer.contact': 'Kontakt',
+    'footer.quicklinks': 'Schnelllinks',
+    'footer.orders': 'Bestellungen, Allgemeine Geschäftsbedingungen, Informationen',
+    'footer.headquarters': 'Hauptsitz',
+    'footer.store': 'Geschäft',
+    'footer.openingHours': 'Öffnungszeiten',
+    'footer.monThu': 'Montag-Donnerstag',
+    'footer.friday': 'Freitag',
+    'footer.satSun': 'Samstag und Sonntag',
+    'footer.closed': 'Geschlossen',
   },
 };
 

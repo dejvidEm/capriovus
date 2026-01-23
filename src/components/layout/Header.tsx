@@ -35,6 +35,7 @@ const Header: React.FC = () => {
     { code: 'sk', label: 'SK' },
     { code: 'en', label: 'EN' },
     { code: 'hu', label: 'HU' },
+    { code: 'de', label: 'DE' },
   ];
 
   const navItems = [
