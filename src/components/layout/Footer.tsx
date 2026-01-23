@@ -14,9 +14,9 @@ const Footer: React.FC = () => {
   };
 
   const orderPhones = ['+1 234 567 8903', '+1 234 567 8904', '+1 234 567 8905'];
-  const headquartersAddress = 'HU 2317 Szigetcsép,\nDunasor 073/72 hrsz.';
+  const headquartersAddress = '123 Example Street,\n12345 Example City, Country';
   const headquartersPhones = ['+1 234 567 8901', '+1 234 567 8902'];
-  const storeAddress = 'HU 1147 Budapest,\nTelepes utca 51.';
+  const storeAddress = '456 Main Avenue,\n54321 Sample Town, Country';
 
   return (
     <footer className="text-white mt-auto" style={{ backgroundColor: 'hsl(210, 70%, 28%)' }}>

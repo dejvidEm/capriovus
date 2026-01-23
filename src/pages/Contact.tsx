@@ -35,7 +35,7 @@ const Contact: React.FC = () => {
   };
 
   const contactInfo = {
-    headquarters: '2317 Szigetcsép, Dunasor 073/72 hrsz., Maďarsko',
+    headquarters: '123 Example Street, 12345 Example City, Country',
     email: 'adresa@gmail.com',
     centralOffice: {
       phone1: '+1 234 567 8901',
@@ -48,22 +48,22 @@ const Contact: React.FC = () => {
     },
     mobile: '+1 234 567 8906',
     ordersEmail: 'adresa@gmail.com',
-    store: '1147 Budapest, Telepes utca 51., Maďarsko',
+    store: '456 Main Avenue, 54321 Sample Town, Country',
   };
 
   // Factory locations
   const locations = {
-    factory1: '2317 Szigetcsép, Dunasor 073/72 hrsz., Maďarsko',
-    factory2: '2317 Szigetcsép, Dózsa György u. 0116/15 hrsz., Maďarsko',
-    store: '1147 Budapest, Telepes utca 51., Maďarsko',
+    factory1: '123 Example Street, 12345 Example City, Country',
+    factory2: '789 Industrial Road, 12345 Example City, Country',
+    store: '456 Main Avenue, 54321 Sample Town, Country',
   };
 
   // Google Maps embed URLs
   // These URLs will display maps for the specified addresses
   const maps = {
-    factory1: `https://www.google.com/maps?q=${encodeURIComponent('2317 Szigetcsép, Dunasor 073/72 hrsz., Maďarsko')}&output=embed`,
-    factory2: `https://www.google.com/maps?q=${encodeURIComponent('2317 Szigetcsép, Dózsa György u. 0116/15 hrsz., Maďarsko')}&output=embed`,
-    store: `https://www.google.com/maps?q=${encodeURIComponent('1147 Budapest, Telepes utca 51., Maďarsko')}&output=embed`,
+    factory1: `https://www.google.com/maps?q=${encodeURIComponent('123 Example Street, 12345 Example City, Country')}&output=embed`,
+    factory2: `https://www.google.com/maps?q=${encodeURIComponent('789 Industrial Road, 12345 Example City, Country')}&output=embed`,
+    store: `https://www.google.com/maps?q=${encodeURIComponent('456 Main Avenue, 54321 Sample Town, Country')}&output=embed`,
   };
 
   return (
@@ -225,9 +225,9 @@ const Contact: React.FC = () => {
                       <div className="pb-4 border-b border-border">
                         <div className="space-y-1 text-sm text-muted-foreground">
                           <div className="font-semibold text-foreground">DAUMA</div>
-                          <div>Za dráhou 21</div>
-                          <div>902 01 Pezinok</div>
-                          <div>Slovensko</div>
+                          <div>100 Business Park Drive</div>
+                          <div>12345 Example City</div>
+                          <div>Country</div>
                         </div>
                       </div>
 
@@ -336,8 +336,8 @@ const Contact: React.FC = () => {
                       {/* Billing Information */}
                       <div className="space-y-1 text-sm text-muted-foreground">
                         <div className="font-semibold text-foreground">DAUMA s.r.o.</div>
-                        <div>Novomeského 24</div>
-                        <div>902 01 Pezinok, SK</div>
+                        <div>200 Corporate Boulevard</div>
+                        <div>12345 Example City, Country</div>
                         <div className="pt-2">
                           <div>IČO 44169922</div>
                           <div>DIČ 2022627717</div>
@@ -475,7 +475,7 @@ const Contact: React.FC = () => {
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title={`${t('contact.locations.factory1')} - Szigetcsép`}
+                    title={`${t('contact.locations.factory1')} - Example City`}
                   />
                 </div>
                 <div className="p-6">
@@ -501,7 +501,7 @@ const Contact: React.FC = () => {
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title={`${t('contact.locations.factory2')} - Szigetcsép`}
+                    title={`${t('contact.locations.factory2')} - Example City`}
                   />
                 </div>
                 <div className="p-6">
@@ -527,7 +527,7 @@ const Contact: React.FC = () => {
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title={`${t('contact.locations.store')} - Budapest`}
+                    title={`${t('contact.locations.store')} - Sample Town`}
                   />
                 </div>
                 <div className="p-6">
